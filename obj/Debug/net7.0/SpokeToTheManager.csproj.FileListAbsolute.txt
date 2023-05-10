@@ -29,3 +29,14 @@ D:\xampp\htdocs\SpokeToTheManager\obj\Debug\net7.0\refint\SpokeToTheManager.dll
 D:\xampp\htdocs\SpokeToTheManager\obj\Debug\net7.0\SpokeToTheManager.pdb
 D:\xampp\htdocs\SpokeToTheManager\obj\Debug\net7.0\SpokeToTheManager.genruntimeconfig.cache
 D:\xampp\htdocs\SpokeToTheManager\obj\Debug\net7.0\ref\SpokeToTheManager.dll
+D:\xampp\htdocs\SpokeToTheManager\bin\Debug\net7.0\Humanizer.dll
+D:\xampp\htdocs\SpokeToTheManager\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+D:\xampp\htdocs\SpokeToTheManager\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\xampp\htdocs\SpokeToTheManager\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\xampp\htdocs\SpokeToTheManager\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\xampp\htdocs\SpokeToTheManager\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+D:\xampp\htdocs\SpokeToTheManager\bin\Debug\net7.0\Mono.TextTemplating.dll
+D:\xampp\htdocs\SpokeToTheManager\bin\Debug\net7.0\MySqlConnector.dll
+D:\xampp\htdocs\SpokeToTheManager\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\xampp\htdocs\SpokeToTheManager\bin\Debug\net7.0\System.CodeDom.dll
+D:\xampp\htdocs\SpokeToTheManager\obj\Debug\net7.0\SpokeToTheManager.csproj.CopyComplete

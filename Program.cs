@@ -1,8 +1,11 @@
+using SpokeToTheManager.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<StmContext>(options => options.UseMySql(builder.Configuration.GetConnectionString("connection"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.27-mariadb")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
