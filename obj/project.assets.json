@@ -1028,11 +1028,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\xampp\\htdocs\\SpokeToTheManager\\SpokeToTheManager.csproj",
+      "projectUniqueName": "D:\\ProyectosGithub\\SpokeToTheManager\\SpokeToTheManager.csproj",
       "projectName": "SpokeToTheManager",
-      "projectPath": "D:\\xampp\\htdocs\\SpokeToTheManager\\SpokeToTheManager.csproj",
+      "projectPath": "D:\\ProyectosGithub\\SpokeToTheManager\\SpokeToTheManager.csproj",
       "packagesPath": "C:\\Users\\tomas\\.nuget\\packages\\",
-      "outputPath": "D:\\xampp\\htdocs\\SpokeToTheManager\\obj\\",
+      "outputPath": "D:\\ProyectosGithub\\SpokeToTheManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "D:\\Users\\tomas\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1041,6 +1041,7 @@
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1089,7 +1090,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

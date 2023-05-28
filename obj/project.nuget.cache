@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RD3iOa6ucP6bH17SR/Tkpb/yJSqoiaXsGGsmjR53e/5BlXUrGFvdIu9Eyw6YrJ49dcUOwqtbvbcplnjyjtT96g==",
+  "dgSpecHash": "lcgp5LMXn0rnHJ1f3sjGv62F5E2avoP5vO7FVrdNhU5oOoZuGx8UAdZb2HwXCXBDAt5YXz6MYFQFvQhnZw1chA==",
   "success": true,
-  "projectFilePath": "D:\\xampp\\htdocs\\SpokeToTheManager\\SpokeToTheManager.csproj",
+  "projectFilePath": "D:\\ProyectosGithub\\SpokeToTheManager\\SpokeToTheManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tomas\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\tomas\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
