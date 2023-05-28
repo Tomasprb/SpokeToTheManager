@@ -6,6 +6,10 @@ namespace SpokeToTheManager.Models;
 
 public partial class StmContext : DbContext
 {
+    public StmContext()
+    {
+    }
+
     public StmContext(DbContextOptions<StmContext> options)
         : base(options)
     {
