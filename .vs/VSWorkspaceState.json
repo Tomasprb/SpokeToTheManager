@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SpokeToTheManager",
+    "\\SpokeToTheManager\\SpokeToTheManager"
   ],
+  "SelectedNode": "\\SpokeToTheManager\\SpokeToTheManager.sln",
   "PreviewInSolutionExplorer": false
 }
