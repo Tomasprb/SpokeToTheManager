@@ -3,8 +3,8 @@
     public class User
     {
         public int Id { get; set; }
-        public String Nombre { get; set; }
-        public String Email { get; set; }
-        public String Contrasenia { get; set; }
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public string Contrasenia { get; set; }
     }
 }
