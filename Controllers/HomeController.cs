@@ -15,6 +15,7 @@ namespace SpokeToTheManager.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
