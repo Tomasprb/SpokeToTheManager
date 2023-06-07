@@ -4,5 +4,9 @@ namespace SpokeToTheManager.Models
     {
         public int Id { get; set; }
         public string descripcion { get; set; } 
+         public TipoEgreso(string descripcion)
+        {
+            this.descripcion = descripcion;
+        }
     }
 }
