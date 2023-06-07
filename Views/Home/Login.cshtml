@@ -15,11 +15,13 @@
         <div class="login-logo">
             <a href="../../index2.html"><b>SpokeToTheManager</b></a>
         </div>
-
+      
+       
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Iniciar secion </p>
-                <form action="../../index3.html" method="post">
+                @using (Html.BeginForm("ActionName", "ControllerName", FormMethod.Post))
+                {
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
@@ -47,22 +49,22 @@
                         </div>
                         <div class="container">
                             <div class="row justify-content-md-center">
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary btn-block">Iniciar sesion</button>
+                                <div class="d-grid gap-2">
+                                    <a href="@Url.Action("index")"></a> <button type="submit" class="btn btn-primary btn-block">Iniciar sesion</button>
+                                </div>
+                            </div>
                         </div>
-                       </div> 
                     </div>
-                    </div>
-                </form>
-                <p class="mb-1">
-                    <a href="forgot-password.html">recuperar contraseña</a>
-                </p>
+
+ }
+
                 <p class="mb-0">
                     <a href="@Url.Action("RegistroUsuario")"class="text-center">nuevo usuario</a>
                 </p>
             </div>
 
         </div>
+       
     </div>
 
 
