@@ -9,16 +9,16 @@ using SpokeToTheManager.Models;
 
 namespace SpokeToTheManager.Controllers
 {
-    public class IngresoesController : Controller
+    public class IngresosController : Controller
     {
         private readonly UserContext _context;
 
-        public IngresoesController(UserContext context)
+        public IngresosController(UserContext context)
         {
             _context = context;
         }
 
-        // GET: Ingresoes
+        // GET: Ingresos
         public async Task<IActionResult> Index()
         {
               return _context.ingresos != null ? 
@@ -26,7 +26,7 @@ namespace SpokeToTheManager.Controllers
                           Problem("Entity set 'UserContext.ingresos'  is null.");
         }
 
-        // GET: Ingresoes/Details/5
+        // GET: Ingresos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.ingresos == null)
@@ -44,13 +44,13 @@ namespace SpokeToTheManager.Controllers
             return View(ingreso);
         }
 
-        // GET: Ingresoes/Create
+        // GET: Ingresos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Ingresoes/Create
+        // POST: Ingresos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -66,7 +66,7 @@ namespace SpokeToTheManager.Controllers
             return View(ingreso);
         }
 
-        // GET: Ingresoes/Edit/5
+        // GET: Ingresos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.ingresos == null)
@@ -82,7 +82,7 @@ namespace SpokeToTheManager.Controllers
             return View(ingreso);
         }
 
-        // POST: Ingresoes/Edit/5
+        // POST: Ingresos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -117,7 +117,7 @@ namespace SpokeToTheManager.Controllers
             return View(ingreso);
         }
 
-        // GET: Ingresoes/Delete/5
+        // GET: Ingresos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.ingresos == null)
@@ -135,7 +135,7 @@ namespace SpokeToTheManager.Controllers
             return View(ingreso);
         }
 
-        // POST: Ingresoes/Delete/5
+        // POST: Ingresos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

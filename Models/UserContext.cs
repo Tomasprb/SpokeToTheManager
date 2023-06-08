@@ -9,12 +9,19 @@ namespace SpokeToTheManager.Models
         public DbSet<TipoIngreso> tipo_ingresos { get; set; }
         public DbSet<Ingreso> ingresos { get; set; }
         public DbSet<Egreso> egresos { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder
-       optionsBuilder)
+        public UserContext(DbContextOptions<UserContext> options) : base(options)
+    {
+    }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=SpokeToTheManagerDBCF
-            ;Trusted_Connection=True;TrustServerCertificate=true");
+             if (!optionsBuilder.IsConfigured)
+            {
+                IConfigurationRoot configuration = new ConfigurationBuilder()
+                   .SetBasePath(Directory.GetCurrentDirectory())
+                   .AddJsonFile("appsettings.json")
+                   .Build();
+                optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=SpokeToTheManagerDBCF;Trusted_Connection=True;TrustServerCertificate=true");
+            }
         }
     }
 }
