@@ -1,0 +1,42 @@
+﻿@model SpokeToTheManager.Models.Egreso
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Egreso</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.acreditado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.acreditado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.observaciones)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.observaciones)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tipo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tipo)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
