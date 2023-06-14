@@ -9,12 +9,15 @@ namespace SpokeToTheManager.Models
         public DbSet<TipoIngreso> tipo_ingresos { get; set; }
         public DbSet<Ingreso> ingresos { get; set; }
         public DbSet<Egreso> egresos { get; set; }
+        public DbSet<Rubro> rubros { get; set; }
+        public DbSet<Socio> socios { get; set; }
+
         public UserContext(DbContextOptions<UserContext> options) : base(options)
-    {
-    }
+        {
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-             if (!optionsBuilder.IsConfigured)
+            if (!optionsBuilder.IsConfigured)
             {
                 IConfigurationRoot configuration = new ConfigurationBuilder()
                    .SetBasePath(Directory.GetCurrentDirectory())
@@ -22,6 +25,13 @@ namespace SpokeToTheManager.Models
                    .Build();
                 optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=SpokeToTheManagerDBCF;Trusted_Connection=True;TrustServerCertificate=true");
             }
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Socio>()
+                .HasOne(c => c.rubro)
+                .WithMany(j => j.Socios)
+                .HasForeignKey(c => c.RubroId);
         }
     }
 }
