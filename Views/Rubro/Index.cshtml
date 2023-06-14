@@ -1,25 +1,19 @@
-﻿@model IEnumerable<SpokeToTheManager.Models.TipoIngreso>
+﻿@model IEnumerable<SpokeToTheManager.Models.Rubro>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1 class="text-center">Tipo de Ingreso</h1>
-<div style="
-          margin-left: 16rem">
-    <p>
-        <a asp-action="Create">Crear nueva</a>
-    </p>
-</div>
-<div class="card " style="
-     margin-left: 15rem;
-    margin-right:80px;
-     margin-top: 16px;">
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.descripcion)
+                @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th></th>
         </tr>
@@ -28,7 +22,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
+                @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -39,4 +33,3 @@
 }
     </tbody>
 </table>
-</div>

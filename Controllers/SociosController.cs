@@ -9,92 +9,90 @@ using SpokeToTheManager.Models;
 
 namespace SpokeToTheManager.Controllers
 {
-    public class IngresosController : Controller
+    public class SociosController : Controller
     {
         private readonly UserContext _context;
 
-        public IngresosController(UserContext context)
+        public SociosController(UserContext context)
         {
             _context = context;
         }
 
-        // GET: Ingresos
+        // GET: Socios
         public async Task<IActionResult> Index()
         {
-              return _context.ingresos != null ? 
-                          View(await _context.ingresos.ToListAsync()) :
-                          Problem("Entity set 'UserContext.ingresos'  is null.");
+            var userContext = _context.socios.Include(s => s.rubro);
+            return View(await userContext.ToListAsync());
         }
 
-        // GET: Ingresos/Details/5
+        // GET: Socios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.ingresos == null)
+            if (id == null || _context.socios == null)
             {
                 return NotFound();
             }
 
-            var ingreso = await _context.ingresos
+            var socio = await _context.socios
+                .Include(s => s.rubro)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (ingreso == null)
+            if (socio == null)
             {
                 return NotFound();
             }
 
-            return View(ingreso);
+            return View(socio);
         }
 
-        // GET: Ingresos/Create
-        public async Task<IActionResult> Create()
+        // GET: Socios/Create
+        public IActionResult Create()
         {
-            var tipos = await _context.tipo_ingresos.ToListAsync();
-            ViewBag.tipos = tipos;
+            ViewData["RubroId"] = new SelectList(_context.rubros, "Id", "Id");
             return View();
         }
 
-        // POST: Ingresos/Create
+        // POST: Socios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,valor,acreditado,observaciones,tipo")] Ingreso ingreso)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Email,Telefono,RubroId")] Socio socio)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ingreso);
+                _context.Add(socio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(ingreso);
+            ViewData["RubroId"] = new SelectList(_context.rubros, "Id", "Id", socio.RubroId);
+            return View(socio);
         }
 
-        // GET: Ingresos/Edit/5
+        // GET: Socios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.ingresos == null)
+            if (id == null || _context.socios == null)
             {
                 return NotFound();
             }
 
-            var ingreso = await _context.ingresos.FindAsync(id);
-            var tipos = await _context.tipo_ingresos.ToListAsync();
-            ViewBag.ingreso = ingreso;
-            ViewBag.tipos = tipos;
-            if (ingreso == null)
+            var socio = await _context.socios.FindAsync(id);
+            if (socio == null)
             {
                 return NotFound();
             }
-            return View();
+            ViewData["RubroId"] = new SelectList(_context.rubros, "Id", "Id", socio.RubroId);
+            return View(socio);
         }
 
-        // POST: Ingresos/Edit/5
+        // POST: Socios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,valor,acreditado,observaciones,tipo")] Ingreso ingreso)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Email,Telefono,RubroId")] Socio socio)
         {
-            if (id != ingreso.Id)
+            if (id != socio.Id)
             {
                 return NotFound();
             }
@@ -103,12 +101,12 @@ namespace SpokeToTheManager.Controllers
             {
                 try
                 {
-                    _context.Update(ingreso);
+                    _context.Update(socio);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!IngresoExists(ingreso.Id))
+                    if (!SocioExists(socio.Id))
                     {
                         return NotFound();
                     }
@@ -119,49 +117,51 @@ namespace SpokeToTheManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(ingreso);
+            ViewData["RubroId"] = new SelectList(_context.rubros, "Id", "Id", socio.RubroId);
+            return View(socio);
         }
 
-        // GET: Ingresos/Delete/5
+        // GET: Socios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.ingresos == null)
+            if (id == null || _context.socios == null)
             {
                 return NotFound();
             }
 
-            var ingreso = await _context.ingresos
+            var socio = await _context.socios
+                .Include(s => s.rubro)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (ingreso == null)
+            if (socio == null)
             {
                 return NotFound();
             }
 
-            return View(ingreso);
+            return View(socio);
         }
 
-        // POST: Ingresos/Delete/5
+        // POST: Socios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.ingresos == null)
+            if (_context.socios == null)
             {
-                return Problem("Entity set 'UserContext.ingresos'  is null.");
+                return Problem("Entity set 'UserContext.socios'  is null.");
             }
-            var ingreso = await _context.ingresos.FindAsync(id);
-            if (ingreso != null)
+            var socio = await _context.socios.FindAsync(id);
+            if (socio != null)
             {
-                _context.ingresos.Remove(ingreso);
+                _context.socios.Remove(socio);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool IngresoExists(int id)
+        private bool SocioExists(int id)
         {
-          return (_context.ingresos?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.socios?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

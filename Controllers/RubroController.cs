@@ -9,92 +9,87 @@ using SpokeToTheManager.Models;
 
 namespace SpokeToTheManager.Controllers
 {
-    public class IngresosController : Controller
+    public class RubroController : Controller
     {
         private readonly UserContext _context;
 
-        public IngresosController(UserContext context)
+        public RubroController(UserContext context)
         {
             _context = context;
         }
 
-        // GET: Ingresos
+        // GET: Rubro
         public async Task<IActionResult> Index()
         {
-              return _context.ingresos != null ? 
-                          View(await _context.ingresos.ToListAsync()) :
-                          Problem("Entity set 'UserContext.ingresos'  is null.");
+              return _context.rubros != null ? 
+                          View(await _context.rubros.ToListAsync()) :
+                          Problem("Entity set 'UserContext.rubros'  is null.");
         }
 
-        // GET: Ingresos/Details/5
+        // GET: Rubro/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.ingresos == null)
+            if (id == null || _context.rubros == null)
             {
                 return NotFound();
             }
 
-            var ingreso = await _context.ingresos
+            var rubro = await _context.rubros
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (ingreso == null)
+            if (rubro == null)
             {
                 return NotFound();
             }
 
-            return View(ingreso);
+            return View(rubro);
         }
 
-        // GET: Ingresos/Create
-        public async Task<IActionResult> Create()
+        // GET: Rubro/Create
+        public IActionResult Create()
         {
-            var tipos = await _context.tipo_ingresos.ToListAsync();
-            ViewBag.tipos = tipos;
             return View();
         }
 
-        // POST: Ingresos/Create
+        // POST: Rubro/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,valor,acreditado,observaciones,tipo")] Ingreso ingreso)
+        public async Task<IActionResult> Create([Bind("Id,Nombre")] Rubro rubro)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ingreso);
+                _context.Add(rubro);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(ingreso);
+            return View(rubro);
         }
 
-        // GET: Ingresos/Edit/5
+        // GET: Rubro/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.ingresos == null)
+            if (id == null || _context.rubros == null)
             {
                 return NotFound();
             }
 
-            var ingreso = await _context.ingresos.FindAsync(id);
-            var tipos = await _context.tipo_ingresos.ToListAsync();
-            ViewBag.ingreso = ingreso;
-            ViewBag.tipos = tipos;
-            if (ingreso == null)
+            var rubro = await _context.rubros.FindAsync(id);
+            if (rubro == null)
             {
                 return NotFound();
             }
-            return View();
+            return View(rubro);
         }
 
-        // POST: Ingresos/Edit/5
+        // POST: Rubro/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,valor,acreditado,observaciones,tipo")] Ingreso ingreso)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] Rubro rubro)
         {
-            if (id != ingreso.Id)
+            if (id != rubro.Id)
             {
                 return NotFound();
             }
@@ -103,12 +98,12 @@ namespace SpokeToTheManager.Controllers
             {
                 try
                 {
-                    _context.Update(ingreso);
+                    _context.Update(rubro);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!IngresoExists(ingreso.Id))
+                    if (!RubroExists(rubro.Id))
                     {
                         return NotFound();
                     }
@@ -119,49 +114,49 @@ namespace SpokeToTheManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(ingreso);
+            return View(rubro);
         }
 
-        // GET: Ingresos/Delete/5
+        // GET: Rubro/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.ingresos == null)
+            if (id == null || _context.rubros == null)
             {
                 return NotFound();
             }
 
-            var ingreso = await _context.ingresos
+            var rubro = await _context.rubros
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (ingreso == null)
+            if (rubro == null)
             {
                 return NotFound();
             }
 
-            return View(ingreso);
+            return View(rubro);
         }
 
-        // POST: Ingresos/Delete/5
+        // POST: Rubro/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.ingresos == null)
+            if (_context.rubros == null)
             {
-                return Problem("Entity set 'UserContext.ingresos'  is null.");
+                return Problem("Entity set 'UserContext.rubros'  is null.");
             }
-            var ingreso = await _context.ingresos.FindAsync(id);
-            if (ingreso != null)
+            var rubro = await _context.rubros.FindAsync(id);
+            if (rubro != null)
             {
-                _context.ingresos.Remove(ingreso);
+                _context.rubros.Remove(rubro);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool IngresoExists(int id)
+        private bool RubroExists(int id)
         {
-          return (_context.ingresos?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.rubros?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
