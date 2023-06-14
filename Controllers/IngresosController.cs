@@ -45,8 +45,10 @@ namespace SpokeToTheManager.Controllers
         }
 
         // GET: Ingresos/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var tipos = await _context.tipo_ingresos.ToListAsync();
+            ViewBag.tipos = tipos;
             return View();
         }
 
@@ -75,7 +77,7 @@ namespace SpokeToTheManager.Controllers
             }
 
             var ingreso = await _context.ingresos.FindAsync(id);
-            var tipos = await _context.tipo_egresos.ToListAsync();
+            var tipos = await _context.tipo_ingresos.ToListAsync();
             ViewBag.ingreso = ingreso;
             ViewBag.tipos = tipos;
             if (ingreso == null)

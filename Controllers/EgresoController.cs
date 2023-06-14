@@ -45,8 +45,10 @@ namespace SpokeToTheManager.Controllers
         }
 
         // GET: Egreso/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var tipos = await _context.tipo_egresos.ToListAsync();
+            ViewBag.tipos = tipos;
             return View();
         }
 
@@ -75,11 +77,14 @@ namespace SpokeToTheManager.Controllers
             }
 
             var egreso = await _context.egresos.FindAsync(id);
+            var tipos = await _context.tipo_egresos.ToListAsync();
+            ViewBag.egreso = egreso;
+            ViewBag.tipos = tipos;
             if (egreso == null)
             {
                 return NotFound();
             }
-            return View(egreso);
+            return View();
         }
 
         // POST: Egreso/Edit/5
