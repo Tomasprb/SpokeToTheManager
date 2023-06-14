@@ -75,11 +75,14 @@ namespace SpokeToTheManager.Controllers
             }
 
             var ingreso = await _context.ingresos.FindAsync(id);
+            var tipos = await _context.tipo_egresos.ToListAsync();
+            ViewBag.ingreso = ingreso;
+            ViewBag.tipos = tipos;
             if (ingreso == null)
             {
                 return NotFound();
             }
-            return View(ingreso);
+            return View();
         }
 
         // POST: Ingresos/Edit/5
