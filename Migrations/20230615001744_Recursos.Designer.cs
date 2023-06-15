@@ -11,7 +11,7 @@ using SpokeToTheManager.Models;
 namespace SpokeToTheManager.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20230614231051_Recursos")]
+    [Migration("20230615001744_Recursos")]
     partial class Recursos
     {
         /// <inheritdoc />
@@ -98,7 +98,53 @@ namespace SpokeToTheManager.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Recurso");
+                    b.ToTable("recursos");
+                });
+
+            modelBuilder.Entity("SpokeToTheManager.Models.Rubro", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("rubros");
+                });
+
+            modelBuilder.Entity("SpokeToTheManager.Models.Socio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RubroId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Telefono")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RubroId");
+
+                    b.ToTable("socios");
                 });
 
             modelBuilder.Entity("SpokeToTheManager.Models.TipoEgreso", b =>
@@ -158,6 +204,22 @@ namespace SpokeToTheManager.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("SpokeToTheManager.Models.Socio", b =>
+                {
+                    b.HasOne("SpokeToTheManager.Models.Rubro", "rubro")
+                        .WithMany("Socios")
+                        .HasForeignKey("RubroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("rubro");
+                });
+
+            modelBuilder.Entity("SpokeToTheManager.Models.Rubro", b =>
+                {
+                    b.Navigation("Socios");
                 });
 #pragma warning restore 612, 618
         }

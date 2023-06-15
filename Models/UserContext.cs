@@ -11,9 +11,7 @@ namespace SpokeToTheManager.Models
         public DbSet<Ingreso> ingresos { get; set; }
         public DbSet<Egreso> egresos { get; set; }
         public DbSet<Recurso> recursos { get; set; }
-
         public DbSet<Socio> socios { get; set; }
-
         public DbSet<Rubro> rubros { get; set; }
         public UserContext(DbContextOptions<UserContext> options) : base(options)
         {

@@ -75,6 +75,75 @@ namespace SpokeToTheManager.Migrations
                     b.ToTable("ingresos");
                 });
 
+            modelBuilder.Entity("SpokeToTheManager.Models.Recurso", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Stock")
+                        .HasColumnType("real");
+
+                    b.Property<float>("ValorXUnidad")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("recursos");
+                });
+
+            modelBuilder.Entity("SpokeToTheManager.Models.Rubro", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("rubros");
+                });
+
+            modelBuilder.Entity("SpokeToTheManager.Models.Socio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RubroId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Telefono")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RubroId");
+
+                    b.ToTable("socios");
+                });
+
             modelBuilder.Entity("SpokeToTheManager.Models.TipoEgreso", b =>
                 {
                     b.Property<int>("Id")
