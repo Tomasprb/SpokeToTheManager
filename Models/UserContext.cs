@@ -12,6 +12,9 @@ namespace SpokeToTheManager.Models
         public DbSet<Egreso> egresos { get; set; }
         public DbSet<Socio> socios { get; set; }
         public DbSet<Rubro> rubros { get; set; }
+        public DbSet<Recurso> recu { get; set; }
+        public DbSet<TipoRecurso> tipos_recursos { get; set; }
+
         public UserContext(DbContextOptions<UserContext> options) : base(options)
         {
         }
