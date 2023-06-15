@@ -10,6 +10,11 @@ namespace SpokeToTheManager.Models
         public DbSet<TipoIngreso> tipo_ingresos { get; set; }
         public DbSet<Ingreso> ingresos { get; set; }
         public DbSet<Egreso> egresos { get; set; }
+        public DbSet<Recurso> recursos { get; set; }
+
+        public DbSet<Socio> socios { get; set; }
+
+        public DbSet<Rubro> rubros { get; set; }
         public UserContext(DbContextOptions<UserContext> options) : base(options)
         {
         }
@@ -23,6 +28,13 @@ namespace SpokeToTheManager.Models
                    .Build();
                 optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=SpokeToTheManagerDBCF;Trusted_Connection=True;TrustServerCertificate=true");
             }
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Socio>()
+                .HasOne(c => c.rubro)
+                .WithMany(j => j.Socios)
+                .HasForeignKey(c => c.RubroId);
         }
     }
 }

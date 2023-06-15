@@ -21,20 +21,20 @@ namespace SpokeToTheManager.Controllers
         // GET: Recurso
         public async Task<IActionResult> Index()
         {
-              return _context.Recurso != null ? 
-                          View(await _context.Recurso.ToListAsync()) :
+              return _context.recursos != null ? 
+                          View(await _context.recursos.ToListAsync()) :
                           Problem("Entity set 'UserContext.Recurso'  is null.");
         }
 
         // GET: Recurso/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Recurso == null)
+            if (id == null || _context.recursos == null)
             {
                 return NotFound();
             }
 
-            var recurso = await _context.Recurso
+            var recurso = await _context.recursos
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (recurso == null)
             {
@@ -69,12 +69,12 @@ namespace SpokeToTheManager.Controllers
         // GET: Recurso/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Recurso == null)
+            if (id == null || _context.recursos == null)
             {
                 return NotFound();
             }
 
-            var recurso = await _context.Recurso.FindAsync(id);
+            var recurso = await _context.recursos.FindAsync(id);
             if (recurso == null)
             {
                 return NotFound();
@@ -120,12 +120,12 @@ namespace SpokeToTheManager.Controllers
         // GET: Recurso/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Recurso == null)
+            if (id == null || _context.recursos == null)
             {
                 return NotFound();
             }
 
-            var recurso = await _context.Recurso
+            var recurso = await _context.recursos
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (recurso == null)
             {
@@ -140,14 +140,14 @@ namespace SpokeToTheManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Recurso == null)
+            if (_context.recursos == null)
             {
                 return Problem("Entity set 'UserContext.Recurso'  is null.");
             }
-            var recurso = await _context.Recurso.FindAsync(id);
+            var recurso = await _context.recursos.FindAsync(id);
             if (recurso != null)
             {
-                _context.Recurso.Remove(recurso);
+                _context.recursos.Remove(recurso);
             }
             
             await _context.SaveChangesAsync();
@@ -156,7 +156,7 @@ namespace SpokeToTheManager.Controllers
 
         private bool RecursoExists(int id)
         {
-          return (_context.Recurso?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.recursos?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
