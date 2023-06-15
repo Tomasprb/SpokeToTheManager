@@ -21,9 +21,7 @@ namespace SpokeToTheManager.Controllers
         // GET: Recurso
         public async Task<IActionResult> Index()
         {
-              return _context.recu != null ? 
-                          View(await _context.recu.ToListAsync()) :
-                          Problem("Entity set 'UserContext.recu'  is null.");
+              return _context.recu != null ? View(await _context.recu.ToListAsync()) :Problem("Entity set 'UserContext.recu'  is null.");
         }
 
         // GET: Recurso/Details/5

@@ -36,6 +36,5 @@ namespace SpokeToTheManager.Models
                 .WithMany(j => j.Socios)
                 .HasForeignKey(c => c.RubroId);
         }
-        public DbSet<SpokeToTheManager.Models.Recurso>? Recurso { get; set; }
     }
 }
