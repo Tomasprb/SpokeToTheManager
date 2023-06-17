@@ -43,8 +43,11 @@ namespace SpokeToTheManager.Controllers
         }
 
         // GET: Recurso/Create
-        public IActionResult Create()
+       
+        public async Task<IActionResult> Create()
         {
+            var tipos = await _context.tipo_ingresos.ToListAsync();
+            ViewBag.tipos = tipos;
             return View();
         }
 
