@@ -58,14 +58,9 @@ namespace SpokeToTheManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Email,Telefono,RubroId")] Socio socio)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(socio);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["RubroId"] = new SelectList(_context.rubros, "Id", "Id", socio.RubroId);
-            return View(socio);
+            _context.Add(socio);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Socios/Edit/5
@@ -96,29 +91,23 @@ namespace SpokeToTheManager.Controllers
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(socio);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SocioExists(socio.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(socio);
+                await _context.SaveChangesAsync();
             }
-            ViewData["RubroId"] = new SelectList(_context.rubros, "Id", "Id", socio.RubroId);
-            return View(socio);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!SocioExists(socio.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Socios/Delete/5
@@ -154,14 +143,14 @@ namespace SpokeToTheManager.Controllers
             {
                 _context.socios.Remove(socio);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool SocioExists(int id)
         {
-          return (_context.socios?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.socios?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

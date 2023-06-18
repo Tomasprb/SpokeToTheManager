@@ -21,9 +21,9 @@ namespace SpokeToTheManager.Controllers
         // GET: Rubro
         public async Task<IActionResult> Index()
         {
-              return _context.rubros != null ? 
-                          View(await _context.rubros.ToListAsync()) :
-                          Problem("Entity set 'UserContext.rubros'  is null.");
+            return _context.rubros != null ?
+                        View(await _context.rubros.ToListAsync()) :
+                        Problem("Entity set 'UserContext.rubros'  is null.");
         }
 
         // GET: Rubro/Details/5
@@ -57,13 +57,9 @@ namespace SpokeToTheManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre")] Rubro rubro)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(rubro);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(rubro);
+            _context.Add(rubro);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Rubro/Edit/5
@@ -93,28 +89,23 @@ namespace SpokeToTheManager.Controllers
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(rubro);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RubroExists(rubro.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(rubro);
+                await _context.SaveChangesAsync();
             }
-            return View(rubro);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!RubroExists(rubro.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Rubro/Delete/5
@@ -149,14 +140,14 @@ namespace SpokeToTheManager.Controllers
             {
                 _context.rubros.Remove(rubro);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool RubroExists(int id)
         {
-          return (_context.rubros?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.rubros?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
