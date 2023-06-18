@@ -23,4 +23,8 @@
     <None Include="C:\Users\lauta\Source\Repos\Tomasprb\SpokeToTheManager\Controllers\.editorconfig" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>
