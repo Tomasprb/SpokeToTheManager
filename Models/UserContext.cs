@@ -14,6 +14,7 @@ namespace SpokeToTheManager.Models
         public DbSet<Rubro> rubros { get; set; }
         public DbSet<Recurso> recu { get; set; }
         public DbSet<TipoRecurso> tipos_recursos { get; set; }
+        
 
         public UserContext(DbContextOptions<UserContext> options) : base(options)
         {
