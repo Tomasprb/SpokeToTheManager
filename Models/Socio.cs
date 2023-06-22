@@ -8,7 +8,7 @@ namespace SpokeToTheManager.Models
         public string Email { get; set; }= " ";
         public double Telefono { get; set; }
         public int RubroId { get; set; }
-        public Rubro rubro { get; set; }
+        public Rubro Rubro { get; set; }
 
     }
 }

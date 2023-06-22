@@ -4,27 +4,36 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="text-center">Detalles de usuario</h1>
 
-<div>
-    <h4>User</h4>
+<div class="card" style="
+     margin-left: 15rem;
+     margin-right:10%;
+     margin-top: 16px;">
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <dl class="row" style="margin-left:5rem ;">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+    <div>
+        <div style="
+     margin-left: 8rem;
+     margin-right: 8rem;
+     margin-bottom: 16px;">
+            <div class=" btn btn-primary">
+                <a asp-action="Index"><FONT COLOR="white">Volver a la lista</FONT></a>
+            </div>
+        </div>
+    </div>
+    </div>

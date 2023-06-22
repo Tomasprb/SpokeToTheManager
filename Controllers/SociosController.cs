@@ -21,7 +21,7 @@ namespace SpokeToTheManager.Controllers
         // GET: Socios
         public async Task<IActionResult> Index()
         {
-            var userContext = _context.socios.Include(s => s.rubro);
+            var userContext = _context.socios.Include(s => s.Rubro);
             return View(await userContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace SpokeToTheManager.Controllers
             }
 
             var socio = await _context.socios
-                .Include(s => s.rubro)
+                .Include(s => s.Rubro)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (socio == null)
             {
@@ -76,7 +76,7 @@ namespace SpokeToTheManager.Controllers
             {
                 return NotFound();
             }
-            ViewData["RubroId"] = new SelectList(_context.rubros, "Id", "Id", socio.RubroId);
+            ViewData["RubroId"] = new SelectList(_context.rubros, "Id", "Nombre", socio.RubroId);
             return View(socio);
         }
 
@@ -119,7 +119,7 @@ namespace SpokeToTheManager.Controllers
             }
 
             var socio = await _context.socios
-                .Include(s => s.rubro)
+                .Include(s => s.Rubro)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (socio == null)
             {

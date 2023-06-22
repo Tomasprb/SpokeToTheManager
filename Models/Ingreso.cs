@@ -7,7 +7,6 @@ namespace SpokeToTheManager.Models
         
         public bool acreditado{ get; set; }  
         public string observaciones { get; set; } = " ";
-
         public string tipo {get;set;} = " ";
 
         

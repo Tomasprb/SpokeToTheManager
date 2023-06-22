@@ -59,6 +59,7 @@ namespace SpokeToTheManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,valor,acreditado,observaciones,tipo")] Ingreso ingreso)
         {
+            
             if (ModelState.IsValid)
             {
                 _context.Add(ingreso);
