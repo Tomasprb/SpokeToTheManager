@@ -1,0 +1,37 @@
+@page
+@* @{
+ViewData["Title"] = "Index";
+} *@
+<h1 class="text-center">Resumen mensual</h1>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>
+                    @ViewBag.totalIngresos
+                </h3>
+                <p>Total de ingresos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>
+                    @ViewBag.totalEgresos
+                </h3>
+                <p>Total de egresos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>
+                    @ViewBag.totalMes
+                </h3>
+                <p>Total del mes</p>
+            </div>
+        </div>
+    </div>
+</div>
