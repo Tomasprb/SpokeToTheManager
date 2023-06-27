@@ -5,7 +5,7 @@ namespace SpokeToTheManager.Models
     public class Ingreso
     {
         public int Id { get; set; }
-        [Display(Name = "valor", ErrorMenssage = "Ingrese un valor")]
+        
         [Range(0.01, double.MaxValue, ErrorMessage = "El valor debe ser un número positivo mayor que cero.")]
         public double valor { get; set; }
         public bool acreditado{ get; set; }  
