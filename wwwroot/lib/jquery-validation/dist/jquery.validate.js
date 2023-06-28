@@ -360,22 +360,22 @@ $.extend( $.validator, {
 	},
 
 	messages: {
-		required: "This field is required.",
-		remote: "Please fix this field.",
-		email: "Please enter a valid email address.",
-		url: "Please enter a valid URL.",
-		date: "Please enter a valid date.",
-		dateISO: "Please enter a valid date (ISO).",
-		number: "Please enter a valid number.",
-		digits: "Please enter only digits.",
-		equalTo: "Please enter the same value again.",
-		maxlength: $.validator.format( "Please enter no more than {0} characters." ),
-		minlength: $.validator.format( "Please enter at least {0} characters." ),
-		rangelength: $.validator.format( "Please enter a value between {0} and {1} characters long." ),
-		range: $.validator.format( "Please enter a value between {0} and {1}." ),
-		max: $.validator.format( "Please enter a value less than or equal to {0}." ),
-		min: $.validator.format( "Please enter a value greater than or equal to {0}." ),
-		step: $.validator.format( "Please enter a multiple of {0}." )
+		required: "Este campo es obligatorio.",
+		remote: "Por favor arregla este campo.",
+		email: "Por favor, introduce una dirección de correo electrónico válida.",
+		url: "Por favor introduzca un URL válido.",
+		date: "Por favor introduzca una fecha valida.",
+		dateISO: "Por favor introduzca una fecha valida.",
+		number: "Por favor ingrese un número valido.",
+		digits: "Por favor ingrese solo dígitos.",
+		equalTo: "Por favor, introduzca el mismo valor de nuevo.",
+		maxlength: $.validator.format("No ingrese más de {0} caracteres".),
+		minlength: $.validator.format("Ingrese al menos {0} caracteres". ),
+		rangelength: $.validator.format("Por favor ingrese un valor entre {0} y {1} caracteres de largo."),
+		range: $.validator.format("Ingrese un valor entre {0} y {1}."),
+		max: $.validator.format("Ingrese un valor menor o igual a {0}." ),
+		min: $.validator.format("Ingrese un valor mayor o igual a {0}." ),
+		step: $.validator.format("Ingrese un múltiplo de {0}". )
 	},
 
 	autoCreateRanges: false,
@@ -640,7 +640,7 @@ $.extend( $.validator, {
 			.filter( function() {
 				var name = this.name || $( this ).attr( "name" ); // For contenteditable
 				if ( !name && validator.settings.debug && window.console ) {
-					console.error( "%o has no name assigned", this );
+					console.error("%o no tiene nombre asignado", this );
 				}
 
 				// Set form expando on contenteditable
@@ -798,7 +798,7 @@ $.extend( $.validator, {
 						console.log( "Exception occurred when checking element " + element.id + ", check the '" + rule.method + "' method.", e );
 					}
 					if ( e instanceof TypeError ) {
-						e.message += ".  Exception occurred when checking element " + element.id + ", check the '" + rule.method + "' method.";
+						e.message += "Se produjo una excepción al comprobar el elemento" + element.id + ", revisa la '" + rule.method + "' método.";
 					}
 
 					throw e;

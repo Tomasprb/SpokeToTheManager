@@ -46,8 +46,8 @@ namespace SpokeToTheManager.Controllers
        
         public async Task<IActionResult> Create()
         {
-            var tipos = await _context.tipos_recursos.ToListAsync();
-            ViewBag.tipos = tipos;
+            var tipos = await _context.tipo_ingresos.ToListAsync();
+            ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
             return View();
         }
 
@@ -80,16 +80,17 @@ namespace SpokeToTheManager.Controllers
         // GET: Recurso/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.recu == null)
+            if (id == null || _context.ingresos == null)
             {
                 return NotFound();
             }
 
-            var recurso = await _context.recu.FindAsync(id);
-            var tipos = await _context.tipos_recursos.ToListAsync();
-            ViewBag.recurso = recurso;
-            ViewBag.tipos = tipos;
-            if (recurso == null)
+            var ingreso = await _context.ingresos.FindAsync(id);
+            var tipos = await _context.tipo_ingresos.ToListAsync();
+            ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
+            ViewBag.ingreso = ingreso;
+
+            if (ingreso == null)
             {
                 return NotFound();
             }

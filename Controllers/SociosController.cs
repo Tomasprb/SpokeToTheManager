@@ -47,8 +47,10 @@ namespace SpokeToTheManager.Controllers
         // GET: Socios/Create
         public IActionResult Create()
         {
+            
             ViewData["RubroId"] = new SelectList(_context.rubros, "Id", "Nombre");
             return View();
+           
         }
 
         // POST: Socios/Create
