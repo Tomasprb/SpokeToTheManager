@@ -21,8 +21,10 @@ namespace SpokeToTheManager.Controllers
         // GET: Egreso
         public async Task<IActionResult> Index()
         {
-              return _context.egresos != null ? 
-                          View(await _context.egresos.ToListAsync()) :
+               var mesAnterior = DateTime.Now.AddMonths(-1).Date;
+            var hoy = DateTime.Now.Date;
+              return _context.ingresos != null ? 
+                          View(await _context.egresos.Where(e => e.fecha >= mesAnterior && e.fecha <= hoy).ToListAsync()) :
                           Problem("Entity set 'UserContext.egresos'  is null.");
         }
 
@@ -47,8 +49,8 @@ namespace SpokeToTheManager.Controllers
         // GET: Egreso/Create
         public async Task<IActionResult> Create()
         {
-            var tipos = await _context.tipo_egresos.ToListAsync();
-            ViewBag.tipos = tipos;
+            var tipos = await _context.tipo_ingresos.ToListAsync();
+            ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
             return View();
         }
 

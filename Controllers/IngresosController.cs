@@ -21,8 +21,10 @@ namespace SpokeToTheManager.Controllers
         // GET: Ingresos
         public async Task<IActionResult> Index()
         {
+            var mesAnterior = DateTime.Now.AddMonths(-1).Date;
+            var hoy = DateTime.Now.Date;
               return _context.ingresos != null ? 
-                          View(await _context.ingresos.ToListAsync()) :
+                          View(await _context.ingresos.Where(e => e.fecha >= mesAnterior && e.fecha <= hoy).ToListAsync()) :
                           Problem("Entity set 'UserContext.ingresos'  is null.");
         }
 
@@ -47,9 +49,11 @@ namespace SpokeToTheManager.Controllers
         // GET: Ingresos/Create
         public async Task<IActionResult> Create()
         {
-            var tipos = await _context.tipo_ingresos.ToListAsync();
-            ViewBag.tipos = tipos;
+           var tipos = await _context.tipo_ingresos.ToListAsync();
+            ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
             return View();
+           
+
         }
 
         // POST: Ingresos/Create
@@ -59,7 +63,7 @@ namespace SpokeToTheManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,valor,acreditado,observaciones,tipo")] Ingreso ingreso)
         {
-            
+          
             if (ModelState.IsValid)
             {
                 ingreso.fecha = DateTime.Now.Date;
@@ -80,8 +84,9 @@ namespace SpokeToTheManager.Controllers
 
             var ingreso = await _context.ingresos.FindAsync(id);
             var tipos = await _context.tipo_ingresos.ToListAsync();
+            ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
             ViewBag.ingreso = ingreso;
-            ViewBag.tipos = tipos;
+         
             if (ingreso == null)
             {
                 return NotFound();
@@ -100,6 +105,7 @@ namespace SpokeToTheManager.Controllers
             {
                 return NotFound();
             }
+
 
             if (ModelState.IsValid)
             {

@@ -47,7 +47,7 @@ namespace SpokeToTheManager.Controllers
         public async Task<IActionResult> Create()
         {
             var tipos = await _context.tipos_recursos.ToListAsync();
-            ViewBag.tipos = tipos;
+            ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
             return View();
         }
 
@@ -87,8 +87,9 @@ namespace SpokeToTheManager.Controllers
 
             var recurso = await _context.recu.FindAsync(id);
             var tipos = await _context.tipos_recursos.ToListAsync();
+            ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
             ViewBag.recurso = recurso;
-            ViewBag.tipos = tipos;
+
             if (recurso == null)
             {
                 return NotFound();

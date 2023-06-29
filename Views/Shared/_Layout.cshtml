@@ -17,20 +17,20 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-    <partial name="_Navbar" />
-    <partial name="_Sidebar" />
-    <div class="content-wrapper">
-    @RenderBody()
+        <partial name="_Navbar" />
+        <partial name="_Sidebar" />
+        <div class="content-wrapper">
+            <section class="content">
+                @RenderBody()
+            </section>
+        </div>
+        <partial name="_Footer" />
     </div>
-    <partial name="_Footer" />
-    <!-- jQuery -->
+</body>
+@await RenderSectionAsync("Scripts", required: false)
 <script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="~/adminlte/dist/js/adminlte.min.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</div>
-
 </html>
