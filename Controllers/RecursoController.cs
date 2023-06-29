@@ -60,6 +60,16 @@ namespace SpokeToTheManager.Controllers
         {
             if (ModelState.IsValid)
             {
+                bool isChecked = Request.Form.ContainsKey("IsChecked") && Request.Form["IsChecked"] == "on";
+                if(isChecked)
+                {
+                    Egreso e = new Egreso();
+                    e.valor = (recurso.stock * recurso.valor_unidad);
+                    e.acreditado = true;
+                    e.observaciones = "Egreso generado con el recurso: "+ recurso.nombre;
+                    e.fecha = DateTime.Now.Date;
+                    _context.Add(e);
+                }
                 _context.Add(recurso);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

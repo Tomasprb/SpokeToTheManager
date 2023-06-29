@@ -61,6 +61,7 @@ namespace SpokeToTheManager.Controllers
         {
             if (ModelState.IsValid)
             {
+                egreso.fecha = DateTime.Now.Date;
                 _context.Add(egreso);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

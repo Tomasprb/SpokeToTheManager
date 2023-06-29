@@ -62,6 +62,7 @@ namespace SpokeToTheManager.Controllers
             
             if (ModelState.IsValid)
             {
+                ingreso.fecha = DateTime.Now.Date;
                 _context.Add(ingreso);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
