@@ -2,9 +2,11 @@
 @* @{
 ViewData["Title"] = "Index";
 } *@
-<h1 class="text-center">Resumen mensual</h1>
+<div class="container-fluid">
+    <h1 class="text-center">Resumen mensual</h1>
+</div>
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-md-4">
         <div class="small-box bg-success">
             <div class="inner">
                 <h3>
@@ -12,9 +14,25 @@ ViewData["Title"] = "Index";
                 </h3>
                 <p>Total de ingresos</p>
             </div>
+            <a class="small-box-footer" asp-area="" asp-controller="Ingresos" asp-action="Index">Lista ingresos
+                <i class="fas fa-arrow-circle-right"></i>
+            </a>
         </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-md-4">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>
+                    @ViewBag.totalMes
+                </h3>
+                <p>Total del mes</p>
+            </div>
+            <a class="small-box-footer" asp-area="" asp-controller="Resumenes" asp-action="Index">Mas informacion
+                <i class="fas fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
         <div class="small-box bg-danger">
             <div class="inner">
                 <h3>
@@ -22,15 +40,34 @@ ViewData["Title"] = "Index";
                 </h3>
                 <p>Total de egresos</p>
             </div>
+            <a class="small-box-footer" asp-area="" asp-controller="Egreso" asp-action="Index">Lista egresos
+                <i class="fas fa-arrow-circle-right"></i>
+            </a>
         </div>
     </div>
-    <div class="col-sm-3">
-        <div class="small-box bg-warning">
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Ingresos</h3>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="small-box bg-info">
             <div class="inner">
                 <h3>
-                    @ViewBag.totalMes
+                    @ViewBag.mesAnterior
                 </h3>
-                <p>Total del mes</p>
+                <p>Total del mes anterior</p>
+            </div>
+            <div class="inner">
+                <h3>
+                    @ViewBag.porcentaje %
+                </h3>
+                <p>Porcentaje de diferencia</p>
             </div>
         </div>
     </div>

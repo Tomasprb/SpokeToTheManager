@@ -23,22 +23,47 @@ namespace SpokeToTheManager.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var startDate = DateTime.Now.AddMonths(-1).Date;
-            var endDate = DateTime.Now.Date;
-            var totalIngresos = await _context.ingresos
-                .Where(i => i.fecha >= startDate && i.fecha <= endDate).Where(i=>i.acreditado==true)
-                .SumAsync(i => i.valor);
+            var mesAnterior = DateTime.Now.AddMonths(-1).Date;
+            var hoy = DateTime.Now.Date;
 
-            var totalEgresos = await _context.egresos
-                .Where(e => e.fecha >= startDate && e.fecha <= endDate).Where(e=>e.acreditado==true)
-                .SumAsync(e => e.valor);
-            var totalMes = totalIngresos - totalEgresos;
-            ViewBag.totalIngresos = totalIngresos;
-            ViewBag.totalEgresos = totalEgresos;
-            ViewBag.totalMes = totalMes;
+            ViewBag.totalIngresos =  await getTotalIngresos(mesAnterior, hoy);
+            ViewBag.totalEgresos =  await getTotalEgresos(mesAnterior, hoy);
+            ViewBag.totalMes =  await getTotal(mesAnterior, hoy);
+            ViewBag.mesAnterior = await getTotal(DateTime.Now.AddMonths(-2).Date, mesAnterior);
+            ViewBag.porcentaje = getPorcentaje(ViewBag.mesAnterior,ViewBag.totalMes);
+            
             return View();
         }
+        private  async Task<double> getTotal(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            double totalIngresos =  await getTotalIngresos(fechaInicial, fechaFinal);
+            double totalEgresos =  await getTotalEgresos(fechaInicial, fechaFinal);
+            double totalMes =  totalIngresos -  totalEgresos;
+            return totalMes;
+        }
+        private async Task<double> getTotalIngresos(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            var totalIngresos = await _context.ingresos
+                .Where(i => i.fecha >= fechaInicial && i.fecha <= fechaFinal).Where(i => i.acreditado == true)
+                .SumAsync(i => i.valor);
+            return totalIngresos;
+        }
+        private async Task<double> getTotalEgresos(DateTime fechaInicial, DateTime fechaFinal)
+        {                
+            var totalEgresos =  await _context.egresos
+                .Where(e => e.fecha >= fechaInicial && e.fecha <= fechaFinal).Where(e => e.acreditado == true)
+                .SumAsync(e => e.valor);
+            return totalEgresos;
+        }
 
+        private double getPorcentaje(double anterior, double actual)
+        {
+            double porcentaje = 0;
+            if (anterior == 0){return 0;}
+            porcentaje = ((actual - anterior) / anterior) * 100;
+
+            return porcentaje;
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
