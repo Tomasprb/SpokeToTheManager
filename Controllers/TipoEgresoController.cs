@@ -55,7 +55,7 @@ namespace SpokeToTheManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,descripcion")] TipoEgreso tipoEgreso)
+        public async Task<IActionResult> Create([Bind("Id,Descripcion")] TipoEgreso tipoEgreso)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace SpokeToTheManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,descripcion")] TipoEgreso tipoEgreso)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Descripcion")] TipoEgreso tipoEgreso)
         {
             if (id != tipoEgreso.Id)
             {

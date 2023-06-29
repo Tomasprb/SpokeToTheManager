@@ -4,17 +4,14 @@
     ViewData["Title"] = "Delete";
 }
 <div class=" text-center">
-    <h1>borrar</h1>
-
-<div class=" text-center">
     <h1>Eliminar usuario</h1>
 </div>
 <div class="card   row justify-content-center align-item-center" style="
      margin-left: 20%;
      margin-right:20%;
      margin-top: 16px;">
-    <a class=" text-center">Al confirmar, eliminara el siguiente usuario:</a>
-    <hr />
+<div><a class=" text-center"><h4>Al confirmar, eliminara el siguiente usuario:</h4></a></div>
+    
     <dl class="row" style="margin-left:5rem ; ">
         <dt class = "col-sm-6">
             @Html.DisplayNameFor(model => model.Nombre)
@@ -29,10 +26,17 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
     </dl>
-    
-    <form asp-action="Delete" class="justify-content-center align-item-center">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver a Usuarios</a>
-    </form>
+    <div style="
+     margin-left: 8rem;
+     margin-right: 8rem;
+     margin-bottom: 16px;" class="row justify-content-md-center">
+        <form asp-action="Delete" style="   margin-left: 5rem;">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            <div class=" btn btn-primary">
+                <a asp-action="Index"><FONT COLOR="white">Volver a la lista</FONT> </a>
+            </div>
+        </form>
+    </div>
 </div>
+

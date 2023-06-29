@@ -4,11 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="text-center">Tipo Recurso</h1>
+<h1 class="text-center">Tipo de recurso</h1>
 <div style ="
           margin-left: 16rem" >
 <p >
-    <a asp-action="Create">Crear nueva</a>
+    <a asp-action="Create">Crear nuevo tipo de recurso</a>
 </p>
 </div>
     <div class="card " style="
@@ -16,14 +16,14 @@
     margin-right:80px;
      margin-top: 16px;">
         <div class="card-header">
-            <h3 class="card-title"> Tipo Recurso</h3>
+            <h3 class="card-title"> Tipo de recurso</h3>
         </div>
     <div class="card-body p-0">
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.descripcion)
+                @Html.DisplayNameFor(model => model.Descripcion)
             </th>
             <th></th>
         </tr>
@@ -32,12 +32,11 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
+                @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
             </td>
         </tr>
 }
