@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SpokeToTheManager.Models;
 using System.Diagnostics;
 
@@ -7,10 +8,12 @@ namespace SpokeToTheManager.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly UserContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger , UserContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -23,10 +26,24 @@ namespace SpokeToTheManager.Controllers
         {
             return View();
         }
-        public IActionResult Login()
+   
+        public IActionResult Login(string email, string password)
         {
-            return PartialView();
+           
+            var user = _context.Usuarios.FirstOrDefault(u => u.Email == email && u.Contrasenia == password);
+
+            if (user != null)
+            {
+                
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Las credenciales proporcionadas no son válidas.");
+                return View();
+            }
         }
+
         public IActionResult RegistroUsuario()
         {
             return PartialView();
