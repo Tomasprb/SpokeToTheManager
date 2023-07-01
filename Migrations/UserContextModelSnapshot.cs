@@ -163,7 +163,7 @@ namespace SpokeToTheManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("descripcion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -180,7 +180,7 @@ namespace SpokeToTheManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("descripcion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -197,7 +197,7 @@ namespace SpokeToTheManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("descripcion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

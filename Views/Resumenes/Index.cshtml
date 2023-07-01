@@ -1,4 +1,4 @@
-@page
+@model SpokeToTheManager.Models.ResumenModel
 @* @{
 ViewData["Title"] = "Index";
 } *@
@@ -27,7 +27,7 @@ ViewData["Title"] = "Index";
                 </h3>
                 <p>Total del mes</p>
             </div>
-            <a class="small-box-footer" asp-area="" asp-controller="Resumenes" asp-action="Index">Mas informacion
+            <a onClick="expandirResumen()" class="small-box-footer">Mas informacion
                 <i class="fas fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -48,27 +48,126 @@ ViewData["Title"] = "Index";
 </div>
 <div class="row">
     <div class="col-md-4">
-        <div class="card">
+        <div class="card collapsed-card" id="IngresosCard">
             <div class="card-header">
-                <h3>Ingresos</h3>
+                <h3 class="card-title">Ingresos</h3>
             </div>
-
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Valor
+                            </th>
+                            <th>
+                                Tipo
+                            </th>
+                            <th>
+                                Fecha
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ingresos)
+                        {
+                            <tr>
+                                <td>
+                                    @item.valor
+                                </td>
+                                <td>
+                                    @item.tipo
+                                </td>
+                                <td>
+                                    @item.fecha
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="col-md-4">
         <div class="small-box bg-info">
             <div class="inner">
                 <h3>
-                    @ViewBag.mesAnterior
+                   $ @ViewBag.mesAnterior
                 </h3>
                 <p>Total del mes anterior</p>
             </div>
             <div class="inner">
                 <h3>
+                    $ @ViewBag.diferencia 
+                </h3>
+                <p>Diferencia con el mes anterior</p>
+            </div>
+            <div class="inner">
+                <h3>
                     @ViewBag.porcentaje %
                 </h3>
-                <p>Porcentaje de diferencia</p>
+                <p>Porcentaje de diferencia con el mes anterior</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card collapsed-card" id="EgresosCard">
+            <div class="card-header">
+                <h3 class="card-title">Egresos</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Valor
+                            </th>
+                            <th>
+                                Tipo
+                            </th>
+                            <th>
+                                Fecha
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.egresos)
+                        {
+                            <tr>
+                                <td>
+                                    @item.valor
+                                </td>
+                                <td>
+                                    @item.tipo
+                                </td>
+                                <td>
+                                    @item.fecha
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function expandirResumen()
+    {
+        if($('#IngresosCard').hasClass('collapsed-card'))
+        {
+            $('#IngresosCard').removeClass('collapsed-card');
+        }
+        else
+        {
+            $('#IngresosCard').addClass('collapsed-card');
+        }
+        if($('#EgresosCard').hasClass('collapsed-card'))
+        {
+            $('#EgresosCard').removeClass('collapsed-card');
+        }
+        else
+        {
+            $('#EgresosCard').addClass('collapsed-card');
+        }
+    }
+</script>

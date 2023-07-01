@@ -30,9 +30,16 @@ namespace SpokeToTheManager.Controllers
             ViewBag.totalEgresos =  await getTotalEgresos(mesAnterior, hoy);
             ViewBag.totalMes =  await getTotal(mesAnterior, hoy);
             ViewBag.mesAnterior = await getTotal(DateTime.Now.AddMonths(-2).Date, mesAnterior);
+            ViewBag.diferencia = getDiferencia(ViewBag.mesAnterior,ViewBag.totalMes);
             ViewBag.porcentaje = getPorcentaje(ViewBag.mesAnterior,ViewBag.totalMes);
-            
-            return View();
+
+            ResumenModel modelo = new ResumenModel
+            {
+                ingresos = await _context.ingresos.Where(e => e.fecha >= DateTime.Now.AddMonths(-2).Date && e.fecha <= hoy).ToListAsync(),
+                egresos = await _context.egresos.Where(e => e.fecha >= DateTime.Now.AddMonths(-2).Date && e.fecha <= hoy).ToListAsync()
+            };
+
+            return View(modelo);
         }
         private  async Task<double> getTotal(DateTime fechaInicial, DateTime fechaFinal)
         {
@@ -56,13 +63,17 @@ namespace SpokeToTheManager.Controllers
             return totalEgresos;
         }
 
+        private double getDiferencia(double anterior, double actual)
+        {
+            return actual - anterior;
+        }
         private double getPorcentaje(double anterior, double actual)
         {
             double porcentaje = 0;
             if (anterior == 0){return 0;}
             porcentaje = ((actual - anterior) / anterior) * 100;
 
-            return porcentaje;
+            return Math.Round(porcentaje, 2);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -5,11 +5,10 @@
 }
 
 <h1 class="text-center">Ingreso</h1>
-<div style ="
-          margin-left: 16rem" >
-<p >
-    <a asp-action="Create">Crear nueva</a>
-</p>
+<div>
+    <p>
+        <a asp-action="Create">Crear nueva</a>
+    </p>
 </div>
 <div class="card " style="
      margin-left: 15rem;
@@ -21,48 +20,48 @@
 
     <div class="card-body p-0">
         <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.valor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.acreditado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.observaciones)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tipo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.valor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.acreditado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.observaciones)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tipo)
-                </td>
-                <td >
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.valor)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.acreditado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.observaciones)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.tipo)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.valor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.acreditado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.observaciones)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tipo)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 
 </div>
