@@ -3,40 +3,33 @@
 @{
     ViewData["Title"] = "Delete";
 }
-
 <div class=" text-center">
-    <h1>borrar</h1>
-
-    <h3>queres borrar esto ?</h3>
+    <h1>Eliminar tipo de recurso</h1>
 </div>
-
-<div class="card" style="
+<div class="card   row justify-content-center align-item-center" style="
      margin-left: 20%;
      margin-right:20%;
      margin-top: 16px;">
-    <div class="text-center">
-        <h4> Tipo Recurso</h4>
-    </div>
-    <hr />
+    <div><a class=" text-center"><h4>Al confirmar, eliminara el siguiente tipo de recurso:</h4></a></div>
+
     <dl class="row" style="margin-left:5rem ; ">
-        <dt class = "col-sm-6">
-            @Html.DisplayNameFor(model => model.descripcion)
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.Descripcion)
         </dt>
-        <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.descripcion)
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.Descripcion)
         </dd>
     </dl>
-    
-<div style="
+    <div style="
      margin-left: 8rem;
      margin-right: 8rem;
-     margin-bottom: 16px;">
+     margin-bottom: 16px;" class="row justify-content-md-center">
         <form asp-action="Delete" style="   margin-left: 5rem;">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="borrar" class="btn btn-danger" /> |
-                <div class=" btn btn-primary">
-                    <a asp-action="Index"><FONT COLOR="white">volver a la lista</FONT> </a>
-                </div>
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            <div class=" btn btn-primary">
+                <a asp-action="Index"><FONT COLOR="white">Volver a Tipo de Recursos</FONT> </a>
+            </div>
         </form>
     </div>
 </div>

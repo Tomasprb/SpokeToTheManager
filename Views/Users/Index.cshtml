@@ -5,6 +5,7 @@
 }
 
 <h1 class="text-center">Usuarios</h1>
+
 <div style="
           margin-left: 16rem">
     <p>
@@ -38,11 +39,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Nombre)
                         </td>
-                        <td> @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>|
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
                         </td>
                     </tr>
                 }

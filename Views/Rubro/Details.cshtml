@@ -5,36 +5,29 @@
 }
 
 <div class=" text-center">
-    <h1>Detalles</h1>
+    <h1>Detalles del rubro</h1>
 </div>
+
 <div class="card" style="
      margin-left: 15rem;
      margin-right:10%;
-     margin-top: 16px;">
-    <div class="text-center">
-        <h4> Rubro</h4>
-    </div>
-    <hr />
+     margin-top: 25px;">
+    <div> </div>
     <dl class="row" style="margin-left:5rem ;">
-        <dt class = "col-sm-6">
+        <dt class="col-sm-6">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
-        <dd class = "col-sm-6">
+        <dd class="col-sm-6">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
     </dl>
-
-<div>
-    <div style="
-     margin-left: 8rem;
-     margin-right: 8rem;
-     margin-bottom: 16px;">
-        <div class=" btn btn-warning">
-            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-        </div>|
-        <div class=" btn btn-primary">
-            <a asp-action="Index"><FONT COLOR="white">volver a la lista</FONT></a>
+    <div class="container" style="padding-bottom:1rem">
+        <div class="row justify-content-md-center">
+            <div class=" btn btn-primary">
+                <a asp-action="Index">
+                    <FONT COLOR="white">Volver a la lista</FONT>
+                </a>
+            </div>
         </div>
-        </div>
-</div>
+    </div>
 </div>

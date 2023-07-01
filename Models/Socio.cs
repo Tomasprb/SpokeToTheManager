@@ -16,7 +16,7 @@ namespace SpokeToTheManager.Models
         public double Telefono { get; set; }
         [Required(ErrorMessage = "El campo tipo rubo es obligatorio.")]
         public int RubroId { get; set; }
-        public Rubro rubro { get; set; }
+        public Rubro Rubro { get; set; }
 
     }
 }

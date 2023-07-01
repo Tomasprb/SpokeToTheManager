@@ -5,9 +5,7 @@
 }
 
 <div class=" text-center">
-    <h1>Editar</h1>
-
-    <h1> Rubro </h1>
+    <h1>Editar rubro</h1>
 </div>
 
 <hr />
@@ -17,12 +15,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
+                <label asp-for="Nombre" 
+                class="control-label">Nombre</label>
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+            <div class="container" style="padding-bottom:1rem">
+                <div class="row justify-content-md-center">
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" class="btn btn-primary" />
+                    </div>
+                </div>
             </div>
         </form>
     </div>
@@ -32,7 +35,7 @@
     <div class="row justify-content-md-center">
         <div class=" btn btn-primary">
             <a asp-action="Index">
-                <FONT COLOR="white">volver a la lista</FONT>
+                <FONT COLOR="white">Volver a la lista</FONT>
             </a>
         </div>
     </div>

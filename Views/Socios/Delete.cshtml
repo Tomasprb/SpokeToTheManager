@@ -3,57 +3,51 @@
 @{
     ViewData["Title"] = "Delete";
 }
-
 <div class=" text-center">
-    <h1>borrar</h1>
-
-    <h3>queres borrar esto ?</h3>
+    <h1>Eliminar socio</h1>
 </div>
-
-<div class="card" style="
+<div class="card   row justify-content-center align-item-center" style="
      margin-left: 20%;
      margin-right:20%;
      margin-top: 16px;">
-    <div class="text-center">
-        <h4>Socios</h4>
-    </div>
-    <hr />
+    <div><a class=" text-center"><h4>Al confirmar, eliminara el siguiente socio:</h4></a></div>
+
     <dl class="row" style="margin-left:5rem ; ">
-        <dt class = "col-sm-6">
+        <dt class="col-sm-6">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
-        <dd class = "col-sm-6">
+        <dd class="col-sm-6">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
-        <dt class = "col-sm-6">
+        <dt class="col-sm-6">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-6">
+        <dd class="col-sm-6">
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt class = "col-sm-6">
+        <dt class="col-sm-6">
             @Html.DisplayNameFor(model => model.Telefono)
         </dt>
-        <dd class = "col-sm-6">
+        <dd class="col-sm-6">
             @Html.DisplayFor(model => model.Telefono)
         </dd>
-        <dt class = "col-sm-6">
-            @Html.DisplayNameFor(model => model.rubro)
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.Rubro)
         </dt>
-        <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.rubro.Id)
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.Rubro.Nombre)
         </dd>
     </dl>
-<div style="
+    <div style="
      margin-left: 8rem;
      margin-right: 8rem;
-     margin-bottom: 16px;">
+     margin-bottom: 16px;" class="row justify-content-md-center">
         <form asp-action="Delete" style="   margin-left: 5rem;">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="borrar" class="btn btn-danger" /> |
-                <div class=" btn btn-primary">
-                    <a asp-action="Index"><FONT COLOR="white">volver a la lista</FONT> </a>
-                </div>
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            <div class=" btn btn-primary">
+                <a asp-action="Index"><FONT COLOR="white">Volver a Socios</FONT> </a>
+            </div>
         </form>
     </div>
 </div>

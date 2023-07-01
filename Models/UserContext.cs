@@ -33,7 +33,7 @@ namespace SpokeToTheManager.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Socio>()
-                .HasOne(c => c.rubro)
+                .HasOne(c => c.Rubro)
                 .WithMany(j => j.Socios)
                 .HasForeignKey(c => c.RubroId);
         }
