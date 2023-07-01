@@ -220,7 +220,7 @@ var windowIsDefined = (typeof window === "undefined" ? "undefined" : _typeof(win
 
 		var ErrorMsgs = {
 			formatInvalidInputErrorMsg: function formatInvalidInputErrorMsg(input) {
-				return "Invalid input value '" + input + "' passed in";
+				return "Valor de entrada no válido '" + input + "' aprobada en'";
 			},
 			callingContextNotSliderInstance: "Calling context element does not have instance of Slider bound to it. Check your code to make sure the JQuery object returned from the call to the slider() initializer is calling the method"
 		};
