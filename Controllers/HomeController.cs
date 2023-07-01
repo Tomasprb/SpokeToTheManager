@@ -26,25 +26,24 @@ namespace SpokeToTheManager.Controllers
         {
             return View();
         }
-   
-        public IActionResult Login(string email, string password)
+        
+        public IActionResult Login(User user)
         {
            
-            var user = _context.Usuarios.FirstOrDefault(u => u.Email == email && u.Contrasenia == password);
+            var existingUser = _context.Usuarios.FirstOrDefault(u => u.Email == user.Email && u.Contrasenia == user.Contrasenia);
 
-            if (user != null)
+            if (existingUser == null)
             {
-                
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ModelState.AddModelError("", "Las credenciales proporcionadas no son válidas.");
+              
+                ModelState.AddModelError("", "Las credenciales ingresadas son incorrectas.");
                 return View();
             }
+
+        
+            return RedirectToAction("Index", "ingreso"); 
         }
 
-        public IActionResult RegistroUsuario()
+    public IActionResult RegistroUsuario()
         {
             return PartialView();
         }
@@ -57,5 +56,6 @@ namespace SpokeToTheManager.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

@@ -733,7 +733,7 @@ var ColorItem = function () {
       }
 
       if (this._color[format] === undefined) {
-        throw new Error('Unsupported color format: \'' + format + '\'');
+          throw new Error('Formato de color no compatible: \'' + format + '\'');
       }
 
       var str = this._color[format]();

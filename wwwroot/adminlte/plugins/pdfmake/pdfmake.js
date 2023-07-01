@@ -15799,7 +15799,7 @@ var PDFSecurity = /*#__PURE__*/function () {
     _classCallCheck(this, PDFSecurity);
 
     if (!options.ownerPassword && !options.userPassword) {
-      throw new Error('None of owner password and user password is defined.');
+        throw new Error('Ninguna contraseña de propietario y contraseña de usuario está definida.');
     }
 
     this.document = document;
@@ -16174,7 +16174,7 @@ function processPasswordR2R3R4() {
     var code = password.charCodeAt(index);
 
     if (code > 0xff) {
-      throw new Error('Password contains one or more invalid characters.');
+        throw new Error('La contraseña contiene uno o más caracteres no válidos.');
     }
 
     out[index] = code;

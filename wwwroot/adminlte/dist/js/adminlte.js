@@ -685,7 +685,7 @@
         }
 
         if (data[operation] === 'undefined') {
-          throw new Error(operation + " is not a function");
+            throw new Error(operation + "no es una función");
         }
 
         data[operation]();
@@ -2520,7 +2520,7 @@
         }
 
         if (!/toggle|close|open/.test(options)) {
-          throw new Error("Undefined method " + options);
+            throw new Error("Método indefinido" + options);
         }
 
         data[options]();
