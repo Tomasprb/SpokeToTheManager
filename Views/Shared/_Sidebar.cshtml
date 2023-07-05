@@ -1,46 +1,118 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a hsp-action="Index" asp-controller="Home" class="brand-link">
+        <img src="~/adminlte/dist/img/AdminLTELogo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">SpokeToTheManager</span>
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar" style="padding:10%">
-        <nav>
-            <ul style=" list-style: square ">
-        <!-- Sidebar Menu -->
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="@Url.Action("Login", "Home")">Login</a>
-                </li> 
-                <li class="nav-item" style="padding-bottom:20%">
-                    <a class="nav-link text-light" asp-area="" asp-controller="Ingresos" asp-action="Index">Ingresos</a>
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Sidebar Menu -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-money-bill"></i>
+                        <p>
+                            Ingresos
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Ingresos" asp-action="Index">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>CRUD ingresos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="TipoIngreso" asp-action="Index">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tipos de ingresos</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item" style="padding-bottom:20%">
-                    <a class="nav-link text-light" asp-area="" asp-controller="TipoIngreso" asp-action="Index">Tipo de ingresos</a>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-money-check"></i>
+                        <p>
+                            Egresos
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Egreso" asp-action="Index">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>CRUD egresos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="TipoEgreso" asp-action="Index">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tipos de egresos</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item" style="padding-bottom:20%">
-                    <a class="nav-link text-light" asp-area="" asp-controller="Egreso" asp-action="Index">Egresos</a>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-inbox"></i>
+                        <p>
+                            Recursos
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Recurso" asp-action="Index">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>CRUD recursos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="TipoRecurso" asp-action="Index">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tipos de recursos</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item" style="padding-bottom:20%">
-                    <a class="nav-link text-light" asp-area="" asp-controller="TipoEgreso" asp-action="Index">Tipo de egresos</a>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Recursos Humanos
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Socios" asp-action="Index">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Socios</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Rubro" asp-action="Index">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Rubros</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item" style="padding-bottom:20%">
-                    <a class="nav-link text-light" asp-area="" asp-controller="Recurso" asp-action="Index">Recursos</a>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">
+                        <i class="fas fa-users nav-icon"></i>
+                        <p>Usuarios</p>
+                    </a>
                 </li>
-                <li class="nav-item" style="padding-bottom:20%">
-                    <a class="nav-link text-light" asp-area="" asp-controller="TipoRecurso" asp-action="Index">Tipo Recursos</a>
-                </li>
-                <li class="nav-item" style="padding-bottom:20%">
-                    <a class="nav-link text-light" asp-area="" asp-controller="Socios" asp-action="Index">Socios</a>
-                </li>
-                <li class="nav-item" style="padding-bottom:20%">
-                    <a class="nav-link text-light" asp-area="" asp-controller="Rubro" asp-action="Index">Rubros</a>
-                </li>
-                <li class="nav-item" style="padding-bottom:20%">
-                    <a class="nav-link text-light" asp-area="" asp-controller="Users" asp-action="Index">Usuarios</a>
-                </li>
-                <li class="nav-item" style="padding-bottom:20%">
-                    <a class="nav-link text-light" asp-area="" asp-controller="Resumenes" asp-action="Index">Resumenes</a>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Resumenes" asp-action="Index">
+                        <i class="fas fa-chart-pie nav-icon"></i>
+                        <p>Resumen mensual</p>
+                    </a>
                 </li>
             </ul>
         </nav>
