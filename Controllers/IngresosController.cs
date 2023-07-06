@@ -23,7 +23,7 @@ namespace SpokeToTheManager.Controllers
         {
             var mesAnterior = DateTime.Now.AddMonths(-1).Date;
             var hoy = DateTime.Now.Date;
-              return _context.ingresos != null ? 
+            return _context.ingresos != null ? 
                           View(await _context.ingresos.Where(e => e.fecha >= mesAnterior && e.fecha <= hoy).ToListAsync()) :
                           Problem("Entity set 'UserContext.ingresos'  is null.");
         }
