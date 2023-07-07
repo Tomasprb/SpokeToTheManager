@@ -49,7 +49,7 @@ namespace SpokeToTheManager.Controllers
         // GET: Egreso/Create
         public async Task<IActionResult> Create()
         {
-            var tipos = await _context.tipo_ingresos.ToListAsync();
+            var tipos = await _context.tipo_egresos.ToListAsync();
             ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
             return View();
         }

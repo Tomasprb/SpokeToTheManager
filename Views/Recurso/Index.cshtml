@@ -3,21 +3,110 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    .text-center {
+        margin-bottom: 20px;
+    }
 
+    .card {
+        margin-left: 15rem;
+        margin-right: 80px;
+        margin-top: 16px;
+    }
+
+    .card-header {
+        color: #fff;
+    }
+
+    .card-title {
+        margin: 0;
+        padding: 10px;
+        font-size: 1.25rem;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+
+        .table th {
+            background-color: #f8f9fa;
+            color: #000;
+            font-weight: bold;
+            background-color: saddlebrown;
+        }
+
+        .table td {
+            background-color: #fff;
+        }
+
+            .table td a {
+                margin-right: 5px;
+            }
+
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .btn-edit {
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
+
+        .btn-edit:hover {
+            background-color: #286090;
+            border-color: #204d74;
+        }
+
+    .btn-details {
+        color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+    }
+
+        .btn-details:hover {
+            background-color: #449d44;
+            border-color: #398439;
+        }
+
+    .btn-delete {
+        color: #fff;
+        background-color: #d9534f;
+        border-color: #d43f3a;
+    }
+
+        .btn-delete:hover {
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+</style>
 <h1 class="text-center">Recurso</h1>
-<div style="
-          margin-left: 16rem">
+<div style="margin-left: 16rem">
     <p>
-        <a asp-action="Create">Crear nueva</a>
+        <a asp-action="Create">Crear nuevo</a>
     </p>
 </div>
-<div class="card " style="
-     margin-left: 15rem;
-    margin-right:80px;
-     margin-top: 16px;">
-    <div class="card-header">
-        <h3 class="card-title"> Recurso</h3>
-    </div>
+<div class="card ">
     <div class="card-body p-0">
 <table class="table">
     <thead>
@@ -52,11 +141,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.valor_unidad)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+                        <td>
+                            <a class="btn btn-edit" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            <a class="btn btn-details" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                            <a class="btn btn-delete" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                        </td>
         </tr>
 }
     </tbody>
