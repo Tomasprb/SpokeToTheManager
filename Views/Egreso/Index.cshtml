@@ -1,68 +1,124 @@
 ﻿@model IEnumerable<SpokeToTheManager.Models.Egreso>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Inicio";
 }
+
+<style>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th,
+        .table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tr:hover {
+            background-color: #e9e9e9;
+        }
+
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .btn-edit {
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
+
+        .btn-edit:hover {
+            background-color: #286090;
+            border-color: #204d74;
+        }
+
+    .btn-details {
+        color: #fff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+    }
+
+        .btn-details:hover {
+            background-color: #449d44;
+            border-color: #398439;
+        }
+
+    .btn-delete {
+        color: #fff;
+        background-color: #d9534f;
+        border-color: #d43f3a;
+    }
+
+        .btn-delete:hover {
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+</style>
+
 <h1 class="text-center">Egreso</h1>
-<div style="
-          margin-left: 16rem">
+
+<div style="margin-left: 16rem">
     <p>
-        <a asp-action="Create">Create New</a>
+        <a asp-action="Create">Crear nuevo</a>
     </p>
 </div>
-<div class="card " style="
-     margin-left: 15rem;
-    margin-right:80px;
-     margin-top: 16px;">
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.valor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.acreditado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.observaciones)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tipo)
-            </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.fecha)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.valor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.acreditado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.observaciones)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tipo)
-            </td>
-            <td>
-                @if (item.fecha.HasValue)
-                   {
-                       <text>@item.fecha.Value.ToString("yyyy-MM-dd")</text>
-                   }
-           </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="card" style="margin-left: 15rem; margin-right: 80px; margin-top: 16px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Valor</th>
+                <th>Acreditado</th>
+                <th>Observaciones</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.valor)</td>
+                    <td>@Html.DisplayFor(modelItem => item.acreditado)</td>
+                    <td>@Html.DisplayFor(modelItem => item.observaciones)</td>
+                    <td>@Html.DisplayFor(modelItem => item.tipo)</td>
+                    <td>
+                        @if (item.fecha.HasValue)
+                        {
+                            <text>@item.fecha.Value.ToString("yyyy-MM-dd")</text>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-edit" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="btn btn-details" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                        <a class="btn btn-delete" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
