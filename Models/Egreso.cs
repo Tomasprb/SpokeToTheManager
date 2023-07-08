@@ -11,7 +11,7 @@ namespace SpokeToTheManager.Models
         public double valor { get; set; }
         public bool acreditado{ get; set; }
         [Required(ErrorMessage = "El campo obseracion es obligatorio.")]
-        [RegularExpression("^[^0-9]+$", ErrorMessage = "El campo Tipo no puede contener números.")]
+      
         public string observaciones { get; set; }= "";
         [Required(ErrorMessage = "El campo Tipo es obligatorio.")]
         public string tipo { get; set; }= "";
