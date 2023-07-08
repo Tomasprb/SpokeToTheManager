@@ -36,6 +36,10 @@ namespace SpokeToTheManager.Models
                 .HasOne(c => c.Rubro)
                 .WithMany(j => j.Socios)
                 .HasForeignKey(c => c.RubroId);
+            modelBuilder.Entity<Recurso>()
+            .HasOne(c => c.Socio)
+            .WithMany(j => j.Recursos)
+            .HasForeignKey(c => c.SocioId);
         }
     }
 }

@@ -18,6 +18,8 @@ namespace SpokeToTheManager.Models
         [Range(0.01, double.MaxValue, ErrorMessage = "El valor por unidad debe ser un número positivo y mayor que cero.")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "El campo Valor debe ser numérico.")]
         public float valor_unidad { get; set; } 
-
+        [Required(ErrorMessage = "El campo Socio es obligatorio.")]
+        public int SocioId { get; set; }
+        public Socio? Socio { get; set; }
     }
 }

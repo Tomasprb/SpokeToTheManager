@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,16 +13,19 @@ namespace SpokeToTheManager.Controllers
     public class RecursoController : Controller
     {
         private readonly UserContext _context;
+        private readonly ILogger<RecursoController> _logger;
 
-        public RecursoController(UserContext context)
+        public RecursoController(UserContext context,ILogger<RecursoController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: Recurso
         public async Task<IActionResult> Index()
         {
-              return _context.recu != null ? View(await _context.recu.ToListAsync()) :Problem("Entity set 'UserContext.recu'  is null.");
+            var userContext = _context.recu.Include(s => s.Socio);
+            return View(await userContext.ToListAsync());
         }
 
         // GET: Recurso/Details/5
@@ -48,6 +52,7 @@ namespace SpokeToTheManager.Controllers
         {
             var tipos = await _context.tipos_recursos.ToListAsync();
             ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
+            ViewBag.socios = new SelectList(_context.socios, "Id", "Nombre");
             return View();
         }
 
@@ -56,8 +61,9 @@ namespace SpokeToTheManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,nombre,tipo,stock,valor_unidad")] Recurso recurso)
+        public async Task<IActionResult> Create([Bind("Id,nombre,tipo,stock,valor_unidad,SocioId")] Recurso recurso)
         {
+            
             if (ModelState.IsValid)
             {
                 bool isChecked = Request.Form.ContainsKey("IsChecked") && Request.Form["IsChecked"] == "on";
@@ -66,6 +72,7 @@ namespace SpokeToTheManager.Controllers
                     Egreso e = new Egreso();
                     e.valor = (recurso.stock * recurso.valor_unidad);
                     e.acreditado = true;
+                    e.tipo = "egreso autogenerado";
                     e.observaciones = "Egreso generado con el recurso: "+ recurso.nombre;
                     e.fecha = DateTime.Now.Date;
                     _context.Add(e);
@@ -74,6 +81,20 @@ namespace SpokeToTheManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            if (!ModelState.IsValid)
+            {
+                // Log or inspect validation errors
+                var errors = ModelState.Values
+            .SelectMany(v => v.Errors)
+            .Select(e => e.ErrorMessage);
+                foreach(var er in errors)
+                {
+                    _logger.LogError(er);
+                }
+            }
+            var tipos = await _context.tipos_recursos.ToListAsync();
+            ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
+            ViewBag.socios = new SelectList(_context.socios, "Id", "Nombre");
             return View(recurso);
         }
 
@@ -88,13 +109,14 @@ namespace SpokeToTheManager.Controllers
             var recurso = await _context.recu.FindAsync(id);
             var tipos = await _context.tipos_recursos.ToListAsync();
             ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
+            ViewBag.socios = new SelectList(_context.socios, "Id", "Nombre");
             ViewBag.recurso = recurso;
 
             if (recurso == null)
             {
                 return NotFound();
             }
-            return View();
+            return View(recurso);
         }
 
         // POST: Recurso/Edit/5
@@ -102,7 +124,7 @@ namespace SpokeToTheManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,nombre,tipo,stock,valor_unidad")] Recurso recurso)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,nombre,tipo,stock,valor_unidad,SocioId")] Recurso recurso)
         {
             if (id != recurso.Id)
             {

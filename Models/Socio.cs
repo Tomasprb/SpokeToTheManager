@@ -7,16 +7,18 @@ namespace SpokeToTheManager.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "El campo Nombre es obligatorio.")]
-        [RegularExpression("^[^0-9]+$", ErrorMessage = "El campo Nombre no puede contener números.")]
+        [RegularExpression("^[^0-9]+$", ErrorMessage = "El campo Nombre no puede contener nï¿½meros.")]
         public string Nombre { get; set; }= " ";
         [Required(ErrorMessage = "El campo email es obligatorio.")]
-        [EmailAddress(ErrorMessage = "El campo Email debe ser una dirección de correo electrónico válida.")]
+        [EmailAddress(ErrorMessage = "El campo Email debe ser una direcciï¿½n de correo electrï¿½nico vï¿½lida.")]
         public string Email { get; set; }= " ";
-        [Required(ErrorMessage = "El campo Teléfono es obligatorio.")]
+        [Required(ErrorMessage = "El campo Telï¿½fono es obligatorio.")]
         public double Telefono { get; set; }
         [Required(ErrorMessage = "El campo tipo rubo es obligatorio.")]
         public int RubroId { get; set; }
-        public Rubro Rubro { get; set; }
+        public Rubro? Rubro { get; set; }
+
+        public ICollection<Recurso>? Recursos { get; set; }
 
     }
 }

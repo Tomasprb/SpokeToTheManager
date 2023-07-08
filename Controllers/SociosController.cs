@@ -60,9 +60,14 @@ namespace SpokeToTheManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Email,Telefono,RubroId")] Socio socio)
         {
-            _context.Add(socio);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if(ModelState.IsValid)
+            {
+                _context.Add(socio);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["RubroId"] = new SelectList(_context.rubros, "Id", "Nombre");
+            return View(socio);
         }
 
         // GET: Socios/Edit/5
