@@ -23,7 +23,7 @@ namespace SpokeToTheManager.Controllers
         {
                var mesAnterior = DateTime.Now.AddMonths(-1).Date;
             var hoy = DateTime.Now.Date;
-              return _context.ingresos != null ? 
+              return _context.egresos != null ? 
                           View(await _context.egresos.Where(e => e.fecha >= mesAnterior && e.fecha <= hoy).ToListAsync()) :
                           Problem("Entity set 'UserContext.egresos'  is null.");
         }
@@ -68,6 +68,8 @@ namespace SpokeToTheManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            var tipos = await _context.tipo_egresos.ToListAsync();
+            ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
             return View(egreso);
         }
 
@@ -87,7 +89,7 @@ namespace SpokeToTheManager.Controllers
             {
                 return NotFound();
             }
-            return View();
+            return View(egreso);
         }
 
         // POST: Egreso/Edit/5
@@ -106,7 +108,14 @@ namespace SpokeToTheManager.Controllers
             {
                 try
                 {
-                    _context.Update(egreso);
+                    var existente = _context.egresos.Find(egreso.Id);
+                    if(existente != null)
+                    {
+                        existente.observaciones = egreso.observaciones;
+                        existente.acreditado = egreso.acreditado;
+                        existente.valor = egreso.valor;
+                        existente.tipo = egreso.tipo;
+                    }
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

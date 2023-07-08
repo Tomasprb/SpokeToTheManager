@@ -71,6 +71,8 @@ namespace SpokeToTheManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            var tipos = await _context.tipo_ingresos.ToListAsync();
+            ViewBag.tipos = new SelectList(tipos, "descripcion", "descripcion");
             return View(ingreso);
         }
 
@@ -91,7 +93,7 @@ namespace SpokeToTheManager.Controllers
             {
                 return NotFound();
             }
-            return View();
+            return View(ingreso);
         }
 
         // POST: Ingresos/Edit/5
@@ -111,7 +113,14 @@ namespace SpokeToTheManager.Controllers
             {
                 try
                 {
-                    _context.Update(ingreso);
+                    var existente = _context.ingresos.Find(ingreso.Id);
+                    if(existente != null)
+                    {
+                        existente.observaciones = ingreso.observaciones;
+                        existente.acreditado = ingreso.acreditado;
+                        existente.valor = ingreso.valor;
+                        existente.tipo = ingreso.tipo;
+                    }
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
