@@ -78,7 +78,10 @@ ViewData["Title"] = "Index";
                                     @item.tipo
                                 </td>
                                 <td>
-                                    @item.fecha
+                                    @if (item.fecha.HasValue)
+                                    {
+                                        <text>@item.fecha.Value.ToString("yyyy-MM-dd")</text>
+                                    }
                                 </td>
                             </tr>
                         }
@@ -140,7 +143,10 @@ ViewData["Title"] = "Index";
                                     @item.tipo
                                 </td>
                                 <td>
-                                    @item.fecha
+                                    @if (item.fecha.HasValue)
+                                    {
+                                        <text>@item.fecha.Value.ToString("yyyy-MM-dd")</text>
+                                    }
                                 </td>
                             </tr>
                         }
