@@ -3,21 +3,18 @@
 @{
     ViewData["Title"] = "Index";
 }
-
 <h1 class="text-center">Tipo de recurso</h1>
 <div style ="
           margin-left: 16rem" >
-<p >
-    <a asp-action="Create">Crear nuevo tipo de recurso</a>
-</p>
+    <a class="btn btn-app bg-info" asp-action="Create">
+        <i class="fas fa-folder-plus"></i>
+        Crear nuevo
+    </a>
 </div>
     <div class="card " style="
      margin-left: 15rem;
     margin-right:80px;
      margin-top: 16px;">
-        <div class="card-header">
-            <h3 class="card-title"> Tipo de recurso</h3>
-        </div>
     <div class="card-body p-0">
 <table class="table">
     <thead>
@@ -34,10 +31,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.descripcion)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-            </td>
+                        <td>
+                            <a class="btn  btn-primary btn-sm " asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"> </i>   Editar</a>
+                            <a class="btn  btn-success btn-sm" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info"> </i> Detalles</a>
+                            <a class="btn  btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"> </i>  Eliminar</a>
+                        </td>
+                       
         </tr>
 }
     </tbody>
