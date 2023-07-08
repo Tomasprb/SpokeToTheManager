@@ -7,9 +7,11 @@
 <h1 class="text-center">Tipo de Ingreso</h1>
 <div style="
           margin-left: 16rem">
-    <p>
-        <a asp-action="Create">Crear nuevo tipo de ingreso</a>
-    </p>
+
+    <a class="btn btn-app bg-info" asp-action="Create">
+        <i class="fas fa-folder-plus"></i>
+        Crear nuevo
+    </a>
 </div>
 
 <div class="card " style="
@@ -37,9 +39,9 @@
                             @Html.DisplayFor(modelItem => item.descripcion)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                            <a class="btn  btn-primary btn-sm " asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"> </i>   Editar</a>
+                            <a class="btn  btn-success btn-sm" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info"> </i> Detalles</a>
+                            <a class="btn  btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"> </i>  Eliminar</a>
                         </td>
                     </tr>
                 }
