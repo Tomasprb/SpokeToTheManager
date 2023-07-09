@@ -62,5 +62,16 @@ namespace SpokeToTheManager.Controllers
         {
             return PartialView("Error!");
         }
+        [HttpPost]
+        public void registrar(User user) { 
+            if (ModelState.IsValid) {
+                _context.Add(user);
+                _ = Login(user);
+            }
+        }
+        public IActionResult Registrar()
+        {
+            return PartialView();
+        }
     }
 }
