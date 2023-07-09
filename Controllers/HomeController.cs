@@ -2,7 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using SpokeToTheManager.Models;
 using System.Diagnostics;
-
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 namespace SpokeToTheManager.Controllers
 {
     public class HomeController : Controller
@@ -15,46 +17,21 @@ namespace SpokeToTheManager.Controllers
             _logger = logger;
             _context = context;
         }
-
+        [Authorize]
         public IActionResult Index()
         {
 
             return View();
         }
-
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
         }
-        
-        public IActionResult Login(User user)
+        public async Task<IActionResult> LogOut()
         {
-           
-            var existingUser = _context.Usuarios.FirstOrDefault(u => u.Email == user.Email && u.Contrasenia == user.Contrasenia);
-
-            if (existingUser == null)
-            {
-              
-                ModelState.AddModelError("", "Las credenciales ingresadas son incorrectas.");
-                return View();
-            }
-
-        
-            return RedirectToAction("Index", "ingreso"); 
-        }
-
-    public IActionResult RegistroUsuario()
-        {
-            return PartialView();
-        }
-        public IActionResult ingresoesController()
-        {
-            return PartialView();
-        }
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login","Acceso");
         }
 
     }

@@ -14,6 +14,8 @@ namespace SpokeToTheManager.Models
         [Required(ErrorMessage = "El campo contraseñia es obligatorio.")]
         public string Contrasenia { get; set; } = " ";
 
+        public bool mantenerLoggeado { get; set; } = false;
+
 
     }
 }
