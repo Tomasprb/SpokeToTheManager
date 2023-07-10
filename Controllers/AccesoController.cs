@@ -63,11 +63,14 @@ namespace SpokeToTheManager.Controllers
             return PartialView("Error!");
         }
         [HttpPost]
-        public void registrar(User user) { 
+        public async Task<IActionResult> Registrar(User user) { 
             if (ModelState.IsValid) {
                 _context.Add(user);
-                _ = Login(user);
+                await _context.SaveChangesAsync();
+                await this.Login(user);
+                return RedirectToAction("Index","Home");
             }
+            return View(user);
         }
         public IActionResult Registrar()
         {
