@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SpokeToTheManager</title>
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/adminlte/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -27,11 +26,36 @@
         <partial name="_Footer" />
     </div>
 </body>
-@await RenderSectionAsync("Scripts", required: false)
-<script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="ruta/al/jquery-validation-messages-es.js"></script>
+<script>
+    $(document).ready(function () {
+        $.validator.setDefaults({
+            errorClass: 'invalid-feedback',
+            errorElement: 'div',
+            errorPlacement: function (error, element) {
+               
+                $(element).addClass('is-invalid');
+               
+                error.insertAfter(element);
+            },
+            highlight: function (element, errorClass, validClass) {
+                
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+               
+                $(element).removeClass('is-invalid');
+            }
+        });
+    });
+</script>
+
 <script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
 <script src="~/adminlte/dist/js/adminlte.min.js"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
 
 </html>

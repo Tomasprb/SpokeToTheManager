@@ -3,11 +3,12 @@
 @{
     ViewData["Title"] = "Create";
 }
-<div class=" text-center">
-<h1>Crear Ingreso</h1>
+
+<div class="text-center">
+    <h1>Crear Ingreso</h1>
 </div>
 <hr />
-<div class="  row justify-content-center align-item-center">
+<div class="row justify-content-center align-item-center">
     <div class="col-md-7">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -42,13 +43,14 @@
 </div>
 <div class="container" style="padding-bottom:1rem">
     <div class="row justify-content-md-center">
-        <div class=" btn btn-primary" >
+        <div class="btn btn-primary">
             <a asp-action="Index"><FONT COLOR="white">volver a la lista</FONT></a>
         </div>
     </div>
 </div>
 
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
