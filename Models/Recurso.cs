@@ -12,11 +12,11 @@ namespace SpokeToTheManager.Models
         public string tipo {get;set;}="";
         [Required(ErrorMessage = "El campo stock es obligatorio.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "El Stock debe ser un número positivo y mayor que cero.")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "El campo Valor debe ser numérico.")]
+        [RegularExpression(@"^[^a-zA-Z]+$", ErrorMessage = "El campo Valor no puede contener letras.")]
         public float stock { get; set; }
         [Required(ErrorMessage = "El campo valor por unidad  es obligatorio.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "El valor por unidad debe ser un número positivo y mayor que cero.")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "El campo Valor debe ser numérico.")]
+        [RegularExpression(@"^[^a-zA-Z]+$", ErrorMessage = "El campo Valor no puede contener letras.")]
         public float valor_unidad { get; set; } 
         [Required(ErrorMessage = "El campo Socio es obligatorio.")]
         public int SocioId { get; set; }

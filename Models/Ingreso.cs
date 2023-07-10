@@ -6,7 +6,7 @@ namespace SpokeToTheManager.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "El campo Valor es obligatorio.")]
-        [RegularExpression(@"^[0-9]+(?:\.[0-9]+)?$", ErrorMessage = "El campo Valor debe ser numérico.")]
+        [RegularExpression(@"^[^a-zA-Z]+$", ErrorMessage = "El campo Valor no puede contener letras.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "El valor debe ser un número positivo mayor que cero.")]
         public double valor { get; set; }
        

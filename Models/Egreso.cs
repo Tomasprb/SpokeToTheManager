@@ -7,7 +7,7 @@ namespace SpokeToTheManager.Models
         public int Id { get; set; }
         [Required(ErrorMessage = "El campo Valor es obligatorio.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "El valor debe ser un numero positivo mayor que cero.")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "El campo Valor debe ser numerico.")]
+        [RegularExpression(@"^[^a-zA-Z]+$", ErrorMessage = "El campo Valor no puede contener letras.")]
         public double valor { get; set; }
         public bool acreditado{ get; set; }
         [Required(ErrorMessage = "El campo obseracion es obligatorio.")]
