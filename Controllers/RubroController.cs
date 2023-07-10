@@ -57,9 +57,13 @@ namespace SpokeToTheManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre")] Rubro rubro)
         {
+            if (ModelState.IsValid) { 
+           
             _context.Add(rubro);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+            }
+            return View(rubro);
         }
 
         // GET: Rubro/Edit/5

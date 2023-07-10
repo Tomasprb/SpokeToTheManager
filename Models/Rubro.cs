@@ -11,6 +11,6 @@ namespace SpokeToTheManager.Models
         [RegularExpression("^[^0-9]+$", ErrorMessage = "El campo Nombre no puede contener números.")]
         public string Nombre { get; set; } = "";
 
-        public ICollection<Socio> Socios { get; set; }
+        public ICollection<Socio> ?Socios { get; set; }
     }
 }
