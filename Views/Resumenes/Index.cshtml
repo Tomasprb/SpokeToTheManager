@@ -6,6 +6,99 @@ ViewData["Title"] = "Index";
     <h1 class="text-center">Resumen mensual</h1>
 </div>
 <div class="row">
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-primary"><i class="fas fa-user"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Usuarios</span>
+                <span class="info-box-number">@ViewBag.usuarios</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-info"><i class="fas fa-users"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Socios</span>
+                <span class="info-box-number">@ViewBag.socios</span>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-orange"><i class="fas fa-copy"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Rubros</span>
+                <span class="info-box-number">@ViewBag.rubros</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-warning"><i class="fas fa-inbox"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Cantidad de Recursos</span>
+                <span class="info-box-number">@ViewBag.recursos</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-lime"><i class="fas fa-money-bill"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Cantidad de Ingresos</span>
+                <span class="info-box-number">@ViewBag.cantIngresos</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-danger"><i class="fas fa-money-check-alt"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Cantidad de Egresos</span>
+                <span class="info-box-number">@ViewBag.cantEgresos</span>
+            </div>
+
+        </div>
+
+    </div>
+     <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-lime"><i class="fas fa-calendar-plus"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Ingresos Mensuales</span>
+                <span class="info-box-number">@ViewBag.ingMensual</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-danger"><i class="fas fa-calendar-minus"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Egresos Mensuales</span>
+                <span class="info-box-number">@ViewBag.egMensual</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+<div class="row">
     <div class="col-md-4">
         <div class="small-box bg-success">
             <div class="inner">
@@ -94,13 +187,13 @@ ViewData["Title"] = "Index";
         <div class="small-box bg-info">
             <div class="inner">
                 <h3>
-                   $ @ViewBag.mesAnterior
+                    $ @ViewBag.mesAnterior
                 </h3>
                 <p>Total del mes anterior</p>
             </div>
             <div class="inner">
                 <h3>
-                    $ @ViewBag.diferencia 
+                    $ @ViewBag.diferencia
                 </h3>
                 <p>Diferencia con el mes anterior</p>
             </div>
@@ -157,22 +250,17 @@ ViewData["Title"] = "Index";
     </div>
 </div>
 <script>
-    function expandirResumen()
-    {
-        if($('#IngresosCard').hasClass('collapsed-card'))
-        {
+    function expandirResumen() {
+        if ($('#IngresosCard').hasClass('collapsed-card')) {
             $('#IngresosCard').removeClass('collapsed-card');
         }
-        else
-        {
+        else {
             $('#IngresosCard').addClass('collapsed-card');
         }
-        if($('#EgresosCard').hasClass('collapsed-card'))
-        {
+        if ($('#EgresosCard').hasClass('collapsed-card')) {
             $('#EgresosCard').removeClass('collapsed-card');
         }
-        else
-        {
+        else {
             $('#EgresosCard').addClass('collapsed-card');
         }
     }

@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using SpokeToTheManager.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -11,17 +13,17 @@ namespace SpokeToTheManager.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly UserContext _context;
-
-        public HomeController(ILogger<HomeController> logger , UserContext context)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public HomeController(ILogger<HomeController> logger , UserContext context,IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }
         [Authorize]
         public IActionResult Index()
         {
-
-            return View();
+            return RedirectToAction("Index","Resumenes");
         }
         [Authorize]
         public IActionResult Privacy()

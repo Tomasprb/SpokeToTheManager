@@ -160,6 +160,30 @@ namespace SpokeToTheManager.Migrations
                     b.ToTable("socios");
                 });
 
+            modelBuilder.Entity("SpokeToTheManager.Models.Tarea", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("tiempoEstimado")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("tareas");
+                });
+
             modelBuilder.Entity("SpokeToTheManager.Models.TipoEgreso", b =>
                 {
                     b.Property<int>("Id")
@@ -261,6 +285,17 @@ namespace SpokeToTheManager.Migrations
                     b.Navigation("Rubro");
                 });
 
+            modelBuilder.Entity("SpokeToTheManager.Models.Tarea", b =>
+                {
+                    b.HasOne("SpokeToTheManager.Models.User", "User")
+                        .WithMany("Tareas")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SpokeToTheManager.Models.Rubro", b =>
                 {
                     b.Navigation("Socios");
@@ -269,6 +304,11 @@ namespace SpokeToTheManager.Migrations
             modelBuilder.Entity("SpokeToTheManager.Models.Socio", b =>
                 {
                     b.Navigation("Recursos");
+                });
+
+            modelBuilder.Entity("SpokeToTheManager.Models.User", b =>
+                {
+                    b.Navigation("Tareas");
                 });
 #pragma warning restore 612, 618
         }

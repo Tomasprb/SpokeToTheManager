@@ -33,6 +33,15 @@ namespace SpokeToTheManager.Controllers
             ViewBag.diferencia = getDiferencia(ViewBag.mesAnterior,ViewBag.totalMes);
             ViewBag.porcentaje = getPorcentaje(ViewBag.mesAnterior,ViewBag.totalMes);
 
+            ViewBag.usuarios = await _context.Usuarios.CountAsync();
+            ViewBag.cantIngresos = await _context.ingresos.CountAsync();
+            ViewBag.cantEgresos = await _context.egresos.CountAsync();
+            ViewBag.ingMensual = await _context.ingresos.Where(i => i.fecha >= mesAnterior && i.fecha <= hoy).Where(i => i.acreditado == true).CountAsync();
+            ViewBag.egMensual = await _context.egresos.Where(i => i.fecha >= mesAnterior && i.fecha <= hoy).Where(i => i.acreditado == true).CountAsync();
+            ViewBag.recursos = await _context.recu.CountAsync();
+            ViewBag.rubros = await _context.rubros.CountAsync();
+            ViewBag.socios = await _context.socios.CountAsync();
+
             ResumenModel modelo = new ResumenModel
             {
                 ingresos = await _context.ingresos.Where(e => e.fecha >= DateTime.Now.AddMonths(-2).Date && e.fecha <= hoy).ToListAsync(),

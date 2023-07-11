@@ -3,77 +3,80 @@
 @{
     ViewData["Title"] = "Inicio";
 }
-
-<style>
-    .table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-        .table th,
-        .table td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .table th {
-            background-color: #f2f2f2;
-            background-color: orangered;
-        }
-
-        .table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .table tr:hover {
-            background-color: #e9e9e9;
-        }
-
-</style>
-
-<h1 class="text-center">Egreso</h1>
-
-<div style="margin-left: 16rem">
+<h1 class="text-center">Egresos</h1>
+<div>
     <a class="btn btn-app bg-info" asp-action="Create">
         <i class="fas fa-folder-plus"></i>
         Crear nuevo
     </a>
 </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div id="example1-wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <table class="table table-bordered table-striped dataTable dtr-inline">
+                                <thead>
+                                    <tr>
+                                        <th class="sorting sorting_desc" tabindex="0" aria-controls="example1" rowspan="1"
+                                            colspan="1" aria-label="Rendering engine: activate to sort column ascending"
+                                            aria-sort="descending">@Html.DisplayNameFor(model => model.valor)</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                            aria-label="Browser: activate to sort column ascending">@Html.DisplayNameFor(model
+                                            => model.acreditado)</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending">
+                                            @Html.DisplayNameFor(model => model.observaciones)</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                            aria-label="Engine version: activate to sort column ascending">
+                                            @Html.DisplayNameFor(model => model.tipo)</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                            aria-label="Engine version: activate to sort column ascending">
+                                            @Html.DisplayNameFor(model => model.fecha)</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="dtr-control sorting_1">
+                                                @Html.DisplayFor(modelItem => item.valor)
+                                            </td>
+                                            <td class="dtr-control sorting_1">
+                                                @Html.DisplayFor(modelItem => item.acreditado)
+                                            </td>
+                                            <td class="dtr-control sorting_1">
+                                                @Html.DisplayFor(modelItem => item.observaciones)
+                                            </td>
+                                            <td class="dtr-control sorting_1">
+                                                @Html.DisplayFor(modelItem => item.tipo)
+                                            </td>
+                                            <td class="dtr-control sorting_1">
+                                                @if (item.fecha.HasValue)
+                                                {
+                                                    @item.fecha.Value.ToString("yyyy-MM-dd")
+                                                }
+                                            </td>
+                                            <td>
+                                                <a class="btn  btn-primary btn-sm " asp-action="Edit" asp-route-id="@item.Id"><i
+                                                        class="fas fa-edit"> </i> Editar</a>
+                                                <a class="btn  btn-success btn-sm" asp-action="Details" asp-route-id="@item.Id"><i
+                                                        class="fas fa-info"> </i> Detalles</a>
+                                                <a class="btn  btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id"><i
+                                                        class="fas fa-trash"> </i> Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
-<div class="card" style="margin-left: 15rem; margin-right: 80px; margin-top: 16px;">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Valor</th>
-                <th>Acreditado</th>
-                <th>Observaciones</th>
-                <th>Tipo</th>
-                <th>Fecha</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.valor)</td>
-                    <td>@Html.DisplayFor(modelItem => item.acreditado)</td>
-                    <td>@Html.DisplayFor(modelItem => item.observaciones)</td>
-                    <td>@Html.DisplayFor(modelItem => item.tipo)</td>
-                    <td>
-                        @if (item.fecha.HasValue)
-                        {
-                            <text>@item.fecha.Value.ToString("yyyy-MM-dd")</text>
-                        }
-                    </td>
-                    <td>
-                        <a class="btn  btn-primary btn-sm " asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"> </i>   Editar</a>
-                        <a class="btn  btn-success btn-sm" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info"> </i> Detalles</a>
-                        <a class="btn  btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"> </i>  Eliminar</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
