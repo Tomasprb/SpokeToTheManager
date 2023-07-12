@@ -14,19 +14,23 @@
             <div class="card-header">
                 <h4>Usuarios</h4>
             </div>
-            <table class="table table-bordered">
-                <tr>
-                    <th>Nombre:</th>
-                    <td>@Html.DisplayFor(model => model.Nombre)</td>
-                </tr>
-                <tr>
-                    <th>Email:</th>
-                    <td>@Html.DisplayFor(model => model.Email)</td>
-                </tr>
-            </table>
+            <div class="card-body">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Nombre:</th>
+                        <td>@Html.DisplayFor(model => model.Nombre)</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>@Html.DisplayFor(model => model.Email)</td>
+                    </tr>
+                </table>
+            </div>
             <div class="card-footer">
                 <div class="btn btn-primary btn-back">
-                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id"><font color="white">Editar</font>
+                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id">
+                        <font color="white">Editar</font>
                     </a></a>
                 </div>
                 <div class="btn btn-primary btn-back">

@@ -21,11 +21,9 @@ namespace SpokeToTheManager.Controllers
         // GET: Egreso
         public async Task<IActionResult> Index()
         {
-               var mesAnterior = DateTime.Now.AddMonths(-1).Date;
-            var hoy = DateTime.Now.Date;
-              return _context.egresos != null ? 
-                          View(await _context.egresos.Where(e => e.fecha >= mesAnterior && e.fecha <= hoy).ToListAsync()) :
-                          Problem("Entity set 'UserContext.egresos'  is null.");
+            return _context.egresos != null ?
+                        View(await _context.egresos.ToListAsync()) :
+                        Problem("Entity set 'UserContext.egresos'  is null.");
         }
 
         // GET: Egreso/Details/5
@@ -59,11 +57,14 @@ namespace SpokeToTheManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,valor,acreditado,observaciones,tipo")] Egreso egreso)
+        public async Task<IActionResult> Create([Bind("Id,valor,acreditado,observaciones,tipo,fecha")] Egreso egreso)
         {
             if (ModelState.IsValid)
             {
-                egreso.fecha = DateTime.Now.Date;
+                if (egreso.fecha == null)
+                {
+                    egreso.fecha = DateTime.Now.Date;
+                }
                 _context.Add(egreso);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,7 +98,7 @@ namespace SpokeToTheManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,valor,acreditado,observaciones,tipo")] Egreso egreso)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,valor,acreditado,observaciones,tipo,fecha")] Egreso egreso)
         {
             if (id != egreso.Id)
             {
@@ -109,12 +110,13 @@ namespace SpokeToTheManager.Controllers
                 try
                 {
                     var existente = _context.egresos.Find(egreso.Id);
-                    if(existente != null)
+                    if (existente != null)
                     {
                         existente.observaciones = egreso.observaciones;
                         existente.acreditado = egreso.acreditado;
                         existente.valor = egreso.valor;
                         existente.tipo = egreso.tipo;
+                        existente.fecha = egreso.fecha;
                     }
                     await _context.SaveChangesAsync();
                 }
@@ -166,14 +168,14 @@ namespace SpokeToTheManager.Controllers
             {
                 _context.egresos.Remove(egreso);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool EgresoExists(int id)
         {
-          return (_context.egresos?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.egresos?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

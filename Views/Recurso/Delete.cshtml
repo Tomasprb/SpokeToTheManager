@@ -1,60 +1,51 @@
 ﻿@model SpokeToTheManager.Models.Recurso
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Borrar";
 }
 
-<div class=" text-center">
-    <h1>borrar</h1>
-
-    <h3>queres borrar esto ?</h3>
+<div class="text-center">
+    <h1>Eliminar Recurso</h1>
 </div>
 
-<div class="card" style="
-     margin-left: 20%;
-     margin-right:20%;
-     margin-top: 16px;">
-    <div class="text-center">
-        <h4>Recurso</h4>
-    </div>
-    <hr />
-    <dl class="row" style="margin-left:5rem ; ">
-        <dt class = "col-sm-6">
-            @Html.DisplayNameFor(model => model.nombre)
-        </dt>
-        <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
-        <dt class = "col-sm-6">
-            @Html.DisplayNameFor(model => model.tipo)
-        </dt>
-        <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.tipo)
-        </dd>
-        <dt class = "col-sm-6">
-            @Html.DisplayNameFor(model => model.stock)
-        </dt>
-        <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.stock)
-        </dd>
-        <dt class = "col-sm-6">
-            @Html.DisplayNameFor(model => model.valor_unidad)
-        </dt>
-        <dd class = "col-sm-6">
-            @Html.DisplayFor(model => model.valor_unidad)
-        </dd>
-    </dl>
-    
-<div style="
-     margin-left: 8rem;
-     margin-right: 8rem;
-     margin-bottom: 16px;">
-        <form asp-action="Delete" style="   margin-left: 5rem;">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="borrar" class="btn btn-danger" /> |
-                <div class=" btn btn-primary">
-                    <a asp-action="Index"><FONT COLOR="white">volver a la lista</FONT> </a>
-                </div>
-        </form>
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header">
+                <h4>Recurso</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Nombre:</th>
+                        <td>@Html.DisplayFor(model => model.nombre)</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo:</th>
+                        <td>@Html.DisplayFor(model => model.tipo)</td>
+                    </tr>
+                    <tr>
+                        <th>Stock:</th>
+                        <td>@Html.DisplayFor(model => model.stock)</td>
+                    </tr>
+                    <tr>
+                        <th>Valor por Unidad:</th>
+                        <td>@Html.DisplayFor(model => model.valor_unidad)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card-footer">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Eliminar" class="btn btn-danger" />
+                    <div class="btn btn-primary btn-back">
+                        <a class="btn-back" asp-action="Index">
+                            <font color="white">Volver a la lista</font>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

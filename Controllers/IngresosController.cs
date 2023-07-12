@@ -21,10 +21,8 @@ namespace SpokeToTheManager.Controllers
         // GET: Ingresos
         public async Task<IActionResult> Index()
         {
-            var mesAnterior = DateTime.Now.AddMonths(-1).Date;
-            var hoy = DateTime.Now.Date;
             return _context.ingresos != null ? 
-                          View(await _context.ingresos.Where(e => e.fecha >= mesAnterior && e.fecha <= hoy).ToListAsync()) :
+                          View(await _context.ingresos.ToListAsync()) :
                           Problem("Entity set 'UserContext.ingresos'  is null.");
         }
 
@@ -62,12 +60,15 @@ namespace SpokeToTheManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,valor,acreditado,observaciones,tipo")] Ingreso ingreso)
+        public async Task<IActionResult> Create([Bind("Id,valor,acreditado,observaciones,tipo,fecha")] Ingreso ingreso)
         {
           
             if (ModelState.IsValid)
             {
-                ingreso.fecha = DateTime.Now.Date;
+                if(ingreso.fecha==null)
+                {
+                    ingreso.fecha = DateTime.Now.Date;
+                }
                 _context.Add(ingreso);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -121,6 +122,7 @@ namespace SpokeToTheManager.Controllers
                         existente.acreditado = ingreso.acreditado;
                         existente.valor = ingreso.valor;
                         existente.tipo = ingreso.tipo;
+                        existente.fecha = ingreso.fecha;
                     }
                     await _context.SaveChangesAsync();
                 }

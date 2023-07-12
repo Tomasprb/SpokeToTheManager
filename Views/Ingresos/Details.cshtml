@@ -13,27 +13,31 @@
             <div class="card-header">
                 <h4>Ingreso</h4>
             </div>
-            <table class="table table-bordered">
-                <tr>
-                    <th>Valor:</th>
-                    <td>@Html.DisplayFor(model => model.valor)</td>
-                </tr>
-                <tr>
-                    <th>Acreditado:</th>
-                    <td>@Html.DisplayFor(model => model.acreditado)</td>
-                </tr>
-                <tr>
-                    <th>Observaciones:</th>
-                    <td>@Html.DisplayFor(model => model.observaciones)</td>
-                </tr>
-                <tr>
-                    <th>Tipo:</th>
-                    <td>@Html.DisplayFor(model => model.tipo)</td>
-                </tr>
-            </table>
+            <div class="card-body">
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Valor:</th>
+                        <td>@Html.DisplayFor(model => model.valor)</td>
+                    </tr>
+                    <tr>
+                        <th>Acreditado:</th>
+                        <td>@Html.DisplayFor(model => model.acreditado)</td>
+                    </tr>
+                    <tr>
+                        <th>Observaciones:</th>
+                        <td>@Html.DisplayFor(model => model.observaciones)</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo:</th>
+                        <td>@Html.DisplayFor(model => model.tipo)</td>
+                    </tr>
+                </table>
+            </div>
             <div class="card-footer">
                 <div class="btn btn-primary btn-back">
-                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id"><font color="white">Editar</font>
+                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id">
+                        <font color="white">Editar</font>
                     </a></a>
                 </div>
                 <div class="btn btn-primary btn-back">
