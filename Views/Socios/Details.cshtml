@@ -6,87 +6,45 @@
 
 
 
-<style>
-    .card {
-        margin: 20px auto;
-        padding: 20px;
-        max-width: 600px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-header {
-        margin-bottom: 10px;
-        text-align: center;
-    }
-
-    .details-table {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .details-table th {
-        font-weight: bold;
-        background-color: #f2f2f2;
-        padding: 5%;
-        text-align: left;
-    }
-
-    .details-table td {
-        padding: 5%;
-        vertical-align: top;
-    }
-
-    .btn-back {
-        display: inline-block;
-        padding: 8px 16px;
-        font-size: 14px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #fff;
-        background-color: #007bff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-</style>
-
 <div class="text-center">
     <h1>Detalles</h1>
 </div>
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h4>Socios</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Nombre:</th>
+                        <td>@Html.DisplayFor(model => model.Nombre)</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>@Html.DisplayFor(model => model.Email)</td>
+                    </tr>
+                    <tr>
+                        <th>Teléfono:</th>
+                        <td>@Html.DisplayFor(model => model.Telefono)</td>
+                    </tr>
+                    <tr>
+                        <th>Rubro:</th>
+                        <td>@Html.DisplayFor(model => model.Rubro.Nombre)</td>
+                    </tr>
+                </table>
+            </div>
 
-<div class="card">
-    <div class="text-center">
-        <h4>Socios</h4>
-    </div>
-    <hr />
-    <table class="details-table">
-        <tr>
-            <th>Nombre:</th>
-            <td>@Html.DisplayFor(model => model.Nombre)</td>
-        </tr>
-        <tr>
-            <th>Email:</th>
-            <td>@Html.DisplayFor(model => model.Email)</td>
-        </tr>
-        <tr>
-            <th>Teléfono:</th>
-            <td>@Html.DisplayFor(model => model.Telefono)</td>
-        </tr>
-        <tr>
-            <th>Rubro:</th>
-            <td>@Html.DisplayFor(model => model.Rubro.Nombre)</td>
-        </tr>
-    </table>
 
-
-<div class="container" style="padding-bottom: 1rem;">
-    <div class="row justify-content-md-center">
-        <div class="btn btn-primary btn-back">
-            <a asp-action="Index"><font color="white">Volver a Socios</font></a>
+            <div class="card-footer">
+                <div class="btn btn-primary btn-back">
+                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+                    <a class="btn-back" asp-action="Index">
+                        <font color="white">Volver a la lista</font>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
- </div>
 </div>

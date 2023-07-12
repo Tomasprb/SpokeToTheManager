@@ -3,91 +3,42 @@
 @{
     ViewData["Title"] = "Details";
 }
-<style>
-    .card {
-        margin: 20px auto;
-        padding: 20px;
-        max-width: 600px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+<div class="text-center">
+    <h1>Detalles</h1>
+</div>
 
-    .card-header {
-        margin-bottom: 10px;
-        text-align: center;
-    }
-
-    .details-table {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-        .details-table th {
-            font-weight: bold;
-            background-color: #f2f2f2;
-            padding: 5%;
-            text-align: left;
-        }
-
-        .details-table td {
-            padding: 5%;
-            vertical-align: top;
-        }
-
-    .btn-edit {
-        display: inline-block;
-        padding: 8px 16px;
-        margin-right: 8px;
-        font-size: 14px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #fff;
-        background-color: #ffc107;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .btn-back {
-        display: inline-block;
-        padding: 8px 16px;
-        font-size: 14px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #fff;
-        background-color: #007bff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-</style>
-
-<div class="card">
-    <div class="card-header">
-        <h1>Detalles</h1>
-    </div>
-    <table class="details-table">
-        <tr>
-            <th>Valor:</th>
-            <td>@Html.DisplayFor(model => model.valor)</td>
-        </tr>
-        <tr>
-            <th>Acreditado:</th>
-            <td>@Html.DisplayFor(model => model.acreditado)</td>
-        </tr>
-        <tr>
-            <th>Observaciones:</th>
-            <td>@Html.DisplayFor(model => model.observaciones)</td>
-        </tr>
-        <tr>
-            <th>Tipo:</th>
-            <td>@Html.DisplayFor(model => model.tipo)</td>
-        </tr>
-    </table>
-    <div class="card-footer text-center">
-        <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
-        <a class="btn-back" asp-action="Index"><font color="white">Volver a la lista</font></a>
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header">
+                <h4>Ingreso</h4>
+            </div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Valor:</th>
+                    <td>@Html.DisplayFor(model => model.valor)</td>
+                </tr>
+                <tr>
+                    <th>Acreditado:</th>
+                    <td>@Html.DisplayFor(model => model.acreditado)</td>
+                </tr>
+                <tr>
+                    <th>Observaciones:</th>
+                    <td>@Html.DisplayFor(model => model.observaciones)</td>
+                </tr>
+                <tr>
+                    <th>Tipo:</th>
+                    <td>@Html.DisplayFor(model => model.tipo)</td>
+                </tr>
+            </table>
+            <div class="card-footer">
+                <div class="btn btn-primary btn-back">
+                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+                    <a class="btn-back" asp-action="Index">
+                        <font color="white">Volver a la lista</font>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
