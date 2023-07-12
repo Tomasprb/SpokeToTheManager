@@ -1,41 +1,39 @@
 ﻿@model SpokeToTheManager.Models.TipoEgreso
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles";
 }
-
-<div class=" text-center">
+<div class="text-center">
     <h1>Detalles</h1>
 </div>
-<div class="card" style="
-     margin-left: 15rem;
-     margin-right:10%;
-     margin-top: 16px;">
-<div>
-        <div class="text-center">
-           <h1>Tipo de Egreso</h1>
-        </div>
-   
-    <hr />
-        <dl class="row" style="margin-left:5rem ;">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-    </dl>
-</div>
-    <div style="
-     margin-left: 8rem;
-     margin-right: 8rem;
-     margin-bottom: 16px;">
-        <div class=" btn btn-warning">
-            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-        </div>|
-        <div class=" btn btn-primary">
-            <a asp-action="Index"><FONT COLOR="white">volver a la lista</FONT></a>
-        </div>
 
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="text-center">
+                <h4>Tipo de Egreso</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Descripcion:</th>
+                        <td>@Html.DisplayFor(model => model.descripcion)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card-footer">
+                <div class="btn btn-primary btn-back">
+                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id"><font color="white">Editar</font>
+                    </a></a>
+                </div>
+                <div class="btn btn-primary btn-back">
+                    <a class="btn-back" asp-action="Index">
+                        <font color="white">Volver a la lista</font>
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

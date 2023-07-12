@@ -1,29 +1,39 @@
 ﻿@model SpokeToTheManager.Models.TipoRecurso
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles";
 }
-<h1 class="text-center">Detalles de usuario</h1>
+<div class="text-center">
+    <h1>Detalles</h1>
+</div>
 
-<div class="card" style="
-     margin-left: 15rem;
-     margin-right:10%;
-     margin-top: 25px;">
-    <dl class="row" style="margin-left:5rem ;">
-        <dt class="col-sm-6">
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-        <dd class="col-sm-6">
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-    </dl>
-    <div class="container" style="padding-bottom:1rem">
-        <div class="row justify-content-md-center">
-            <div class=" btn btn-primary">
-                <a asp-action="Index">
-                    <FONT COLOR="white">Volver a Tipo de Recursos</FONT>
-                </a>
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="text-center">
+                <h4>Tipo de Recurso</h4>
             </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Descripcion:</th>
+                        <td>@Html.DisplayFor(model => model.descripcion)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card-footer">
+                <div class="btn btn-primary btn-back">
+                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id"><font color="white">Editar</font>
+                    </a></a>
+                </div>
+                <div class="btn btn-primary btn-back">
+                    <a class="btn-back" asp-action="Index">
+                        <font color="white">Volver a la lista</font>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

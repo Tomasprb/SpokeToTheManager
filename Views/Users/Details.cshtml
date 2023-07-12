@@ -1,7 +1,7 @@
 ﻿@model SpokeToTheManager.Models.User
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles";
 }
 
 <div class="text-center">
@@ -26,7 +26,10 @@
             </table>
             <div class="card-footer">
                 <div class="btn btn-primary btn-back">
-                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id"><font color="white">Editar</font>
+                    </a></a>
+                </div>
+                <div class="btn btn-primary btn-back">
                     <a class="btn-back" asp-action="Index">
                         <font color="white">Volver a la lista</font>
                     </a>

@@ -1,7 +1,7 @@
 ﻿@model SpokeToTheManager.Models.Rubro
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles";
 }
 
 
@@ -15,7 +15,6 @@
             <div class="text-center">
                 <h4>Rubro</h4>
             </div>
-            <hr />
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
@@ -27,7 +26,10 @@
 
             <div class="card-footer">
                 <div class="btn btn-primary btn-back">
-                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+                    <a class="btn-edit" asp-action="Edit" asp-route-id="@Model.Id"><font color="white">Editar</font>
+                    </a></a>
+                </div>
+                <div class="btn btn-primary btn-back">
                     <a class="btn-back" asp-action="Index">
                         <font color="white">Volver a la lista</font>
                     </a>
