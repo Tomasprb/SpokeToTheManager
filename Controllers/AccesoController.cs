@@ -54,7 +54,7 @@ namespace SpokeToTheManager.Controllers
                 new ClaimsPrincipal(claimsIdentity),properties);
                 return RedirectToAction("Index","Home");
             }
-            ViewData["ValidacionMensaje"] = "usuario no encontrado";
+            ViewData["ValidacionMensaje"] = "Usuario no encontrado";
             return PartialView(user);
         }
 
