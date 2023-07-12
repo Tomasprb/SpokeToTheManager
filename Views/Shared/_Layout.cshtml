@@ -6,11 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SpokeToTheManager</title>
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/adminlte/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/bs-stepper/css/bs-stepper.min.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/dropzone/min/dropzone.min.css">
+    <link rel="stylesheet" href="~/adminlte/dist/css/adminlte.min.css?v=3.2.0">
     @await RenderSectionAsync("Styles", required: false)
 </head>
 
@@ -36,17 +48,17 @@
             errorClass: 'invalid-feedback',
             errorElement: 'div',
             errorPlacement: function (error, element) {
-               
+
                 $(element).addClass('is-invalid');
-               
+
                 error.insertAfter(element);
             },
             highlight: function (element, errorClass, validClass) {
-                
+
                 $(element).addClass('is-invalid');
             },
             unhighlight: function (element, errorClass, validClass) {
-               
+
                 $(element).removeClass('is-invalid');
             }
         });
@@ -54,7 +66,6 @@
 </script>
 
 <script src="~/adminlte/dist/js/adminlte.min.js"></script>
-<script src="~/adminlte/dist/js/date.js"></script>
 <script src="~/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
 <script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
 <script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
